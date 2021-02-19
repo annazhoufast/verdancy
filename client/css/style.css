@@ -1,0 +1,84 @@
+body {
+  font-family: "Inter", Helvetica, Arial, sans-serif;
+  font-size: 14pt;
+  color: #68717A;
+  background-color: #ffffff;
+}
+
+h1 {
+  color: #373A3C;
+  font-weight: bold;
+}
+
+section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+a:hover {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.green-background, .green-background a, .green-background h1 {
+  color: #ffffff;
+  background-color: #679967;
+}
+
+.green-background a:hover, .green-background a:active, .green-background a:focus {
+  color: #194B19;
+}
+
+.centered {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+}
+
+/* navbar */
+
+header {
+  height: 100px;
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+#navbar a {
+  margin-left: 24px;
+}
+
+/* float sections */
+
+.left-half, .left-nav {
+  float: left;
+}
+
+.right-half, .right-nav, .right-nav a {
+  float: right;
+}
+
+.left-half {
+  width: 55%;
+}
+
+.right-half {
+  width: 45%;
+}
+
+.left-nav {
+  width: 25%;
+}
+
+.right-nav {
+  width: 75%;
+}
+
+/* home page sections */
+
+#title {
+  height: 450px;
+}
+
+#mission, #background {
+  height: 600px;
+}
