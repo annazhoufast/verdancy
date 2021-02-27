@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ecoPlantly</title>
+    <title>Verdancy</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- style.css -->
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/style_anna.css" />
 
     <!-- Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,15 +23,15 @@
   <header class="green-background" id="header">
     <div class="container">
       <div class="left-nav" id="logo">
-        <a href="index.html">ecoPlantly</a>
+        <a href="index.html">verdancy</a>
       </div>
 
       <div class="right-nav" id="navbar">
         <a href="getstarted.html">sign in</a>
         <a href="getstarted.html">get started</a>
-        <a href="">my garden</a>
+        <a href="mygarden.html">my garden</a>
         <a href="emissions.html">my emissions</a>
-        <a href="">search</a>
+        <a href="plantdb.html">search</a>
         <a href="advice.html">advice</a>
       </div>
     </div>
@@ -39,78 +40,103 @@
   <section class="green-background" id="title">
     <div class="container">
       <div class="left-half">
-        <h1>ecoPlantly</h1>
+        <h1>verdancy</h1>
+        <h2>[vər-​dᵊn(t)-​sē] noun</h2>
+        <h2>1. <span class="darkgreen-text"><b>green</b></span> with vegetation</h2>
         <br>
-        <p>
-          Growing your own food at home is not only easier than it looks, but it can also help save the environment, one green onion at a time.
-        </p>
+        <span>Go <span class="darkgreen-text"><b>green</b></span> with us. Reduce your</span>
+        <p>carbon footprint with home gardening!</p>
         <br>
-        <p>
-          No idea where to start? Don’t worry, you’re not alone. ecoPlantly is here to be the guide for your home gardening journey.
-        </p>
+        <button type="button" class="btn btn-primary">Search our database</button>
+      </div>
+      <div class="right-half centered">
+        <img src="imgs/home/main.png" alt="calm illustration">
       </div>
     </div>
   </section>
 
-  <section id="mission">
+  <section id="background">
     <div class="container">
       <div class="left-half">
-        <h1>our mission</h1>
+        <h2>the background</h2>
         <br>
-        <p>
-          Growing your own food geatly cuts down on carbon emissions compared to buying from the grocery store. To help home gardeners be more
-          conscious of the environmental impact of food sourcing, ecoPlantly tracks and visualizes how much home gardeners are saving in carbon
-          emissions with each vegetable they grow.
-        </p>
+        <span class="big-stat">8% </span><span>of personal carbon footprint comes from food. That's around</span>
+        <span class="big-stat"> 720 lbs </span><span>a year!</span>
         <br>
-        <p>
-          We want to bridge the gap between inexperienced gardeners and home gardening resources. Growing your food is truly accessible.
-          ecoPlantly provides a beginner-friendly database of vegetables and herbs, complete with considerations for available space, climate,
-          and materials. Trust us, anybody can garden if they really want to!
-        </p>
+        <span>
+          At Verdancy, we believe small changes lead to big impacts. Simply growing your own vegtables with
+          home gardening will drastically reduce your carbon footprint. Let's show you how!
+        <span>
+      </div>
+      <div class="right-half centered">
+        <img src="imgs/home/footprint.png" alt="carbon footprint">
       </div>
     </div>
   </section>
 
-  <section class="green-background" id="background">
+  <section class="green-background" id="steps">
     <div class="container">
-      <div class="left-half">
-        <h1>the background</h1>
-        <br>
-        <p>
-          Food production alone accounts for one quarter of the world’s greenhouse gas emissions. The majority of food’s carbon footprint can be
-          attributed to mass production emissions in factories and farms. Transport to grocery retailers is also a huge factor, with the average
-          distance travelled by retail vegetables being 1500 miles.
-        </p>
-        <br>
-        <p>
-          Growing your own food reduces production resources consumed, organic and packaging waste, and food miles travelled, all of which are
-          significant contributors to greenhouse gas emissions. If households could replace just 20% of store-bought food with self-grown food,
-          they could reduce their carbon footprint by 68 pounds of CO2e a year!
-        </p>
+      <h2>three easy steps</h2>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-lg-4 centered">
+          <img src="imgs/home/search.png" alt="search icon">
+          <br>
+          <br>
+          <p><b>search</b></p>
+          <p>our database has tons of beginner-friendly vegetables</p>
+        </div>
+        <div class="col-lg-4 centered">
+          <img src="imgs/home/add.png" alt="add icon">
+          <br>
+          <br>
+          <p><b>add</b></p>
+          <p>keep track of the vegetables you grow using a virtual garden</p>
+        </div>
+        <div class="col-lg-4 centered">
+          <img src="imgs/home/harvest.png" alt="harvest">
+          <br>
+          <br>
+          <p><b>harvest</b></p>
+          <p>congrats, you just reduced your food emissions!</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="team">
     <div class="container">
-      <h1>meet the team</h1>
+      <h2>meet the team</h2>
+      <br>
       <br>
       <div class="row">
         <div class="col-lg-3 centered">
-          <p>Jared Lai</p>
+          <img src="imgs/home/jared.png" alt="Jared">
+          <br>
+          <br>
+          <p><b>Jared Lai</b></p>
           <p>Front End Lead</p>
         </div>
         <div class="col-lg-3 centered">
-          <p>Ana De Las Alas</p>
+          <img src="imgs/home/ana.png" alt="Ana">
+          <br>
+          <br>
+          <p><b>Ana De Las Alas</b></p>
           <p>Project Manager</p>
         </div>
         <div class="col-lg-3 centered">
-          <p>Jessica Prasetyo</p>
+          <img src="imgs/home/jess.png" alt="Jessica">
+          <br>
+          <br>
+          <p><b>Jessica Prasetyo</b></p>
           <p>Front End Lead</p>
         </div>
         <div class="col-lg-3 centered">
-          <p>Anna Zhou</p>
+          <img src="imgs/home/anna.png" alt="Anna">
+          <br>
+          <br>
+          <p><b>Anna Zhou</b></p>
           <p>Back End Lead</p>
         </div>
       </div>

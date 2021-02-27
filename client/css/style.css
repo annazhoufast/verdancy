@@ -1,12 +1,17 @@
 body {
   font-family: "Inter", Helvetica, Arial, sans-serif;
-  font-size: 14pt;
-  color: #68717A;
   background-color: #ffffff;
+  color: #373A3C;
+  font-size: 16pt;
 }
 
 h1 {
-  color: #373A3C;
+  font-size: 72pt;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 34pt;
   font-weight: bold;
 }
 
@@ -25,7 +30,7 @@ a:hover {
   background-color: #679967;
 }
 
-.green-background a:hover, .green-background a:active, .green-background a:focus {
+.darkgreen-text, .green-background a:hover, .green-background a:active, .green-background a:focus {
   color: #194B19;
 }
 
@@ -58,11 +63,11 @@ header {
 }
 
 .left-half {
-  width: 55%;
+  width: 58%;
 }
 
 .right-half {
-  width: 45%;
+  width: 42%;
 }
 
 .left-nav {
@@ -76,9 +81,41 @@ header {
 /* home page sections */
 
 #title {
-  height: 450px;
+  height: 575px;
 }
 
-#mission, #background {
-  height: 600px;
+#title h2 {
+  font-weight: normal;
+}
+
+#background {
+  height: 650px;
+}
+
+#steps {
+  height: 625px;
+}
+
+.big-stat {
+  color: #194B19;
+  font-size: 72pt;
+  font-weight: bold;
+}
+
+#title img {
+  width: 100%;
+}
+
+#background img{
+  width: 115%;
+  margin-top: 15%;
+  margin-left: 4%;
+}
+
+#team img{
+  width: 75%;
+}
+
+#steps img {
+  width: 50%;
 }
