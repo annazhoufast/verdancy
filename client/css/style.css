@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  font-size: 72pt;
+  font-size: 64pt;
   font-weight: bold;
 }
 
@@ -34,6 +34,10 @@ a:hover {
   color: #194B19;
 }
 
+.white-text {
+  color: #ffffff;
+}
+
 .centered {
   display: inline-block;
   width: auto;
@@ -54,20 +58,24 @@ header {
 
 /* float sections */
 
-.left-half, .left-nav {
+.left-side, .left-half, .left-nav {
   float: left;
 }
 
-.right-half, .right-nav, .right-nav a {
+.right-side, .right-half, .right-nav, .right-nav a {
   float: right;
 }
 
-.left-half {
+.left-side {
   width: 58%;
 }
 
-.right-half {
+.right-side {
   width: 42%;
+}
+
+.left-half, .right-half {
+  width: 50%;
 }
 
 .left-nav {
@@ -78,7 +86,7 @@ header {
   width: 75%;
 }
 
-/* home page sections */
+/* home page */
 
 #title {
   height: 575px;
@@ -118,4 +126,44 @@ header {
 
 #steps img {
   width: 50%;
+}
+
+/* get started and sign in pages */
+
+#getstarted, #signin {
+  padding-top: 0;
+}
+
+#getstarted .left-half, #signin .left-half{
+  padding-top: 64px;
+}
+
+#getstarted .right-half, #signin .right-half {
+  background-image: url("../imgs/background.png");
+  background-size: cover;
+  height: 850px;
+  padding-top: 15%;
+  padding-left: 5%;
+}
+
+#getstarted h1, #signin h1{
+  font-weight: normal;
+}
+
+.form-group, #getstarted button, #signin button {
+  width: 75%;
+}
+
+.form-group {
+  margin-bottom: 5%;
+}
+
+#getstarted button, #signin button {
+  margin-top: 5%;
+}
+
+/* advice page */
+
+#advice img {
+  width: 75%;
 }
