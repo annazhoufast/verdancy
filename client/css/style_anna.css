@@ -48,14 +48,86 @@
 
 .viewPlantButton {
     float: right;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.myImg {
+.myImg, .chart {
     width: 100%;
     /* height: auto; */
 }
 
 .aPlantImg {
     width: 100%;
+    object-fit: cover;
     height: 80%;
+}
+
+hr {
+    border-top: 1px solid black;
+}
+
+
+.pad-top-5 {
+    padding-top: 5rem;
+}
+
+.pad-bot-5 {
+    padding-bottom: 5rem;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.pName, .col-2, .col-10, .aPlantInfo {
+    padding-left: 0px;
+}
+
+.col-2, .col-10 {
+    padding-right: 0px;
+    padding-top: 1rem;
+}
+
+.aPlantInfo {
+    padding-right: 5rem;
+}
+
+.aPlantName .row p, i, .row .col-10 b {
+    color: #194B19;
+}
+
+/* 679967 */
+
+.jumEmissions {
+    /* background-color: #679967; */
+    /* color: white; */
+    /* padding-bottom: 5rem; */
+    padding-top: 3rem;
+}
+
+.emText {
+    padding-left: 10rem;
+}
+
+.cNum {
+    padding-top: 7rem;
+    font-size: 120px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.eq-icon {
+    /* padding-top: 1rem;
+    padding-bottom: 1rem; */
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
