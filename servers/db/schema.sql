@@ -36,6 +36,7 @@ CREATE TABLE if not exists Plants (
     UnitWeight INT NOT NULL,
     UnitDescr VARCHAR(200) NOT NULL,
     Descr VARCHAR(500) NOT NULL,
+    ImageLink VARCHAR(250) NOT NULL,
     Considerations VARCHAR(500),
     WhenToPlant VARCHAR(500),
     GrowFromSeeds VARCHAR(500),
@@ -47,9 +48,6 @@ CREATE TABLE if not exists Plants (
     Harvesting VARCHAR(500),
     Storage VARCHAR(500)
 );
-
---   Image1 BLOB NOT NULL,
-    -- Image2 BLOB NOT NULL,
 
 CREATE TABLE if not exists PlantSoil (
     PlantSoilID INT NOT NULL auto_increment PRIMARY KEY,
