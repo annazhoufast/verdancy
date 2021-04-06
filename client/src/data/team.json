@@ -1,0 +1,26 @@
+[
+    {
+        "Name": "Jared Lai",
+        "Role": "Front End Lead",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/html/client/imgs/home/jared.png?token=ALLXA2YLCVAM63OTKU7LCQLAOSOPM",
+        "Alt": "Photo of Jared Lai"
+    },
+    {
+        "Name": "Ana De Las Alas",
+        "Role": "Project Manager",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/html/client/imgs/home/ana.png?token=ALLXA26WLXBJNLF3KVXXQC3AOSOOQ",
+        "Alt": "Photo of Ana De Las Alas"
+    },
+    {
+        "Name": "Jessica Prasetyo",
+        "Role": "UX Designer",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/html/client/imgs/home/jess.png?token=ALLXA22NSNXZWZ3XL5JOQOTAOSOVE",
+        "Alt": "Photo of Jessica Prasetyo"
+    },
+    {
+        "Name": "Anna Zhou",
+        "Role": "Back End Lead",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/html/client/imgs/home/anna.png?token=ALLXA2YK6AAYMZMZEILLWITAOSOYI",
+        "Alt": "Photo of Anna Zhou"
+    }
+]
