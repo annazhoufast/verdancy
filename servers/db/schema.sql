@@ -3,8 +3,7 @@ CREATE TABLE if not exists Users (
     Email VARCHAR(254) NOT NULL UNIQUE,
     UserFname VARCHAR(50) NOT NULL,
     UserLname VARCHAR(50) NOT NULL,
-    PassHash BINARY(128) NOT NULL,
-    BirthDate DATE NOT NULL
+    PassHash BINARY(128) NOT NULL
 );
 
 CREATE TABLE if not exists SignIns (
