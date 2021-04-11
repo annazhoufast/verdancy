@@ -17,14 +17,20 @@ export class Steps extends React.Component {
         }
 
         return (
-            <Container className="green-background">
-                <h2>three easy steps</h2>
-                <br/>
-                <br/>
+            <section className="green-background">
+              <div className="container">
                 <Row>
-                    {s}
+                  <div>
+                    <h2>three easy steps</h2>
+                    <br/>
+                    <br/>
+                    <Row>
+                        {s}
+                    </Row>
+                  </div>
                 </Row>
-            </Container>
+              </div>
+            </section>
         )
     }
 }

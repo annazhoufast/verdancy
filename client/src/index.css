@@ -2,42 +2,92 @@
 
 
 body {
-    font-family: "Inter", Helvetica, Arial, sans-serif;
-    background-color: #ffffff;
-    color: #373A3C;
-    font-size: 16pt;
-
+  font-family: "Inter", Helvetica, Arial, sans-serif;
+  font-size: 16pt;
+  color: #373A3C;
+  background-color: #ffffff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
-.green-background, .green-background a, .green-background h1 {
-    color: #ffffff;
-    background-color: #679967;
-  }
-  
-  .darkgreen-text, .green-background a:hover, .green-background a:active, .green-background a:focus {
-    color: #194B19;
-  }
+h1 {
+  font-size: 64pt;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 34pt;
+  font-weight: bold;
+}
+
+section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.link:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.green-background {
+  color: #ffffff;
+  background-color: #679967;
+}
 
 .darkgreen-background {
-    color: white;
-    background-color: #194B19;
+  color: #ffffff;
+  background-color: #194B19;
 }
 
 .cream-background {
-    background-color: #F4EBC2;
+  color: #373A3C;
+  background-color: #F4EBC2;
+}
+
+.darkgreen-text, .green-background .link:hover {
+  color: #194B19;
+}
+
+.white-text, .green-background .link, .darkgreen-background .link:hover{
+  color: #ffffff;
+}
+
+.black-text, .cream-background .link, .cream-background .link:hover {
+  color: #373A3C;
 }
 
 .centered {
-    display: inline-block;
-    width: auto;
-    text-align: center;
-  }
+  display: inline-block;
+  width: auto;
+  text-align: center;
+}
 
-.fullImg {
-    width: 100%;
+/* navbar */
+
+.nav-bar {
+  padding-top: 24px;
+}
+
+.nav-links .link {
+  margin-left: 48px;
+}
+
+/* home page */
+
+.title-desc {
+  width: 65%;
+}
+
+.step-img, .step-desc {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-img {
+  width: 80%;
 }

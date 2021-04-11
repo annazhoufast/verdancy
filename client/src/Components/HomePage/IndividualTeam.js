@@ -5,11 +5,10 @@ export class IndividualTeam extends React.Component {
     render() {
         return (
             <Col lg={3} className="centered">
-                <img src={this.props.pfp} alt={this.props.prpAlt} className="fullImg" />
-                <br/>
-                <p>
-                    <b>{this.props.name}</b>
-                </p>
+                <img src={this.props.pfp} alt={this.props.prpAlt} className="team-img" />
+                <br />
+                <br />
+                <p><b>{this.props.name}</b></p>
                 <p>{this.props.role}</p>
             </Col>
         )

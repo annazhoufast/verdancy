@@ -7,22 +7,28 @@ export class Team extends React.Component {
         var teamData = require("../../data/team.json");
         let ppl = [];
         for (let i = 0; i < teamData.length; i++) {
-            ppl.push(<IndividualTeam pfp={teamData[i].Img} 
-                                        alt={teamData[i].Alt} 
+            ppl.push(<IndividualTeam pfp={teamData[i].Img}
+                                        alt={teamData[i].Alt}
                                         name={teamData[i].Name}
                                         role={teamData[i].Role} />
                     );
         }
 
         return (
-            <Container>
-                <h2><b>meet the team</b></h2>
-                <br/>
-                <br/>
+            <section>
+              <div className="container">
                 <Row>
-                    {ppl}
+                  <div>
+                    <h2>meet the team</h2>
+                    <br />
+                    <br />
+                    <Row>
+                        {ppl}
+                    </Row>
+                  </div>
                 </Row>
-            </Container>
+              </div>
+            </section>
         )
     }
 }
