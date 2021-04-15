@@ -54,18 +54,6 @@
         * `405`: Wrong Method
         * `415`: Wrong Content Header
 
-* `PATCH`: `/plants/{plantID}`: edit harvested plants
-    * Inputs: PlantID, UserID
-    * Outputs: `text`: successful edits made
-    * Header:
-        * Authentication: bearer token
-        * Content-Type `application/json`
-    * Response Codes:
-        * `201`: Success
-        * `400`: Plant ID does not exist
-        * `401`: User not authenticated
-        * `405`: Wrong Method
-
 * `GET`: `/emissions/`: get sum of total emissions for specific user
     * Inputs: UserID
     * Outputs: `application/json`
@@ -84,6 +72,17 @@
     * Response Codes:
         * `200`: `application/json` success
         * `400`: PlantID does not exist
+        * `401`: User not authenticated
+        * `405`: Wrong Method
+* `PATCH`: `/user/{plantID}`: edit harvested plants
+    * Inputs: PlantID, UserID
+    * Outputs: `text`: successful edits made
+    * Header:
+        * Authentication: bearer token
+        * Content-Type `application/json`
+    * Response Codes:
+        * `201`: Success
+        * `400`: Plant ID does not exist
         * `401`: User not authenticated
         * `405`: Wrong Method
 * `DELETE`: `/user/{plantID}`: remove plant from garden
