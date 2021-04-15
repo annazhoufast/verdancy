@@ -1,3 +1,7 @@
+CREATE DATABASE verdancy;
+
+USE verdancy;
+
 CREATE TABLE if not exists Users (
     UserID INT NOT NULL auto_increment PRIMARY KEY,
     Email VARCHAR(254) NOT NULL UNIQUE,
@@ -13,16 +17,6 @@ CREATE TABLE if not exists SignIns (
     IPAddress VARCHAR(100) NOT NULL UNIQUE
 );
 
-CREATE TABLE if not exists Soil (
-    SoilID INT NOT NULL auto_increment PRIMARY KEY,
-    SoilName VARCHAR(250) NOT NULL
-);
-
-CREATE TABLE if not exists SunLevel (
-    SunLevelID INT NOT NULL auto_increment PRIMARY KEY,
-    SunLevelName VARCHAR(250) NOT NULL
-);
-
 CREATE TABLE if not exists Plants (
     PlantID INT NOT NULL auto_increment PRIMARY KEY,
     PlantName VARCHAR(50) NOT NULL,
@@ -36,6 +30,8 @@ CREATE TABLE if not exists Plants (
     UnitDescr VARCHAR(200) NOT NULL,
     Descr VARCHAR(500) NOT NULL,
     ImageLink VARCHAR(250) NOT NULL,
+    Soil VARCHAR(250) NOT NULL,
+    Sun VARCHAR(250) NOT NULL,
     Considerations VARCHAR(500),
     WhenToPlant VARCHAR(500),
     GrowFromSeeds VARCHAR(500),
@@ -48,23 +44,16 @@ CREATE TABLE if not exists Plants (
     Storage VARCHAR(500)
 );
 
-CREATE TABLE if not exists PlantSoil (
-    PlantSoilID INT NOT NULL auto_increment PRIMARY KEY,
-    FOREIGN KEY (SoilID) REFERENCES Soil(SoilID),
-    FOREIGN KEY (PlantID) REFERENCES Plants(PlantID)
-);
-
-CREATE TABLE if not exists PlantSun (
-    PlantSunID INT NOT NULL auto_increment PRIMARY KEY,
-    FOREIGN KEY (SunID) REFERENCES SunLevel(SunLevelID),
-    FOREIGN KEY (PlantID) REFERENCES Plants(PlantID)
-);
-
 CREATE TABLE if not exists UserPlants (
     UserPlantID INT NOT NULL auto_increment PRIMARY KEY,
+    UserID INT NOT NULL,
+    PlantID INT NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (PlantID) REFERENCES Plants(PlantID),
     Quantity INT NOT NULL
 );
+
+LOAD DATA LOCAL INFILE'/Users/annaqzhou/INFO/Capstone/veggies.csv' INTO TABLE Plants FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS(PlantName, CO2PerUnit, UnitWeight, UnitDescr, PlantScientificName, Height, ZoneStart, ZoneEnd, Difficulty, Descr, Sun, Soil, Considerations, WhenToPlant, GrowFromSeeds, Transplanting, Spacing, Watering, Feeding, Other, Harvesting, Storage);
+
 
 

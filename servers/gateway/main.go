@@ -24,8 +24,7 @@ import (
 type Director func(r *http.Request)
 
 func CustomDirector(target []*url.URL, signingKey string, sessionStore sessions.Store) Director {
-	var counter int32
-	counter = 0
+	var counter int32 = 0
 	return func(r *http.Request) {
 		targ := target[counter%int32(len(target))]
 		atomic.AddInt32(&counter, 1)
