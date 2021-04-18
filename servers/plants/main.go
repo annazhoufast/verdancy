@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	plants "plantastic/servers/plants/handlers"
 
 	"github.com/gorilla/mux"
 )
@@ -19,8 +20,13 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// server :=
+	server := plants.Context{PlantStore: db}
 
-	mux.HandleFunc("/user/")
+	mux.HandleFunc("/v1/plants", server.PlantsHandler)
+	mux.HandleFunc("/v1/plants/{plantID}", server.SpecificPlantsHandler)
+	mux.HandleFunc("/v1/UserPlants/{plantID}", server.SpecificUserHandler)
+	mux.HandleFunc("/v1/UserPlants/", server.UserHandler)
+	mux.HandleFunc("/v1/emissions/", server.EmissionsHandler)
+
 	http.ListenAndServe(addr, mux)
 }
