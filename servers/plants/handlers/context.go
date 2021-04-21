@@ -30,8 +30,8 @@ type UserPlants struct {
 	TotalCO2  int
 }
 
-type Quanity struct {
-	Quanity int
+type Quantity struct {
+	Quantity int
 }
 
 type Emissions struct {

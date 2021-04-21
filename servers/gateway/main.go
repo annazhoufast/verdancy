@@ -11,11 +11,14 @@ import (
 	"net/url"
 	"os"
 	"plantastic/servers/gateway/handlers"
+	"plantastic/servers/gateway/handlers/plants_main"
 	"plantastic/servers/gateway/models/users"
 	"plantastic/servers/gateway/sessions"
 	"strings"
 	"sync/atomic"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/go-redis/redis"
 	"github.com/gorilla/mux"
@@ -44,6 +47,19 @@ func CustomDirector(target []*url.URL, signingKey string, sessionStore sessions.
 	}
 }
 
+func CustomDirector2(target *url.URL) Director {
+	return func(r *http.Request) {
+		r.Header.Add("X-Forwarded-Host", r.Host)
+		r.Host = target.Host
+		r.URL.Host = target.Host
+		r.URL.Scheme = target.Scheme
+	}
+}
+
+func RootHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, world!")
+}
+
 func main() {
 	addr := os.Getenv("ADDR")
 	TLSCERT := os.Getenv("TLSCERT")
@@ -52,20 +68,36 @@ func main() {
 	REDISADDR := os.Getenv("REDISADDR")
 	DSN := os.Getenv("DSN")
 	PLANTADDR := os.Getenv("PLANTADDR")
+	// HELLOADDR := os.Getenv("HELLOADDR")
+	SUMMARYADDR := os.Getenv("SUMMARYADDR")
 
 	client := redis.NewClient(
 		&redis.Options{
 			Addr: REDISADDR,
 		},
 	)
+	ping, err := client.Ping().Result()
+	if err != nil {
+		fmt.Printf("pong: %v", ping)
+		log.Printf("pong: %v", ping)
+		fmt.Printf("error getting redis: %v", err)
+		log.Printf("error getting redis: %v", err)
+	}
 	redisStore := sessions.NewRedisStore(client, time.Hour)
 	db, dbErr := sql.Open("mysql", DSN)
 	if dbErr != nil {
+		log.Printf("Error opening db: %v", dbErr)
 		fmt.Printf("Error opening database: %v", dbErr)
 	}
 	defer db.Close()
+	dbOpenErr := db.Ping()
+	if dbOpenErr != nil {
+		log.Printf("error pinging db: %v", dbOpenErr)
+		fmt.Printf("Error pinging db: %v", dbOpenErr)
+	}
 	userStore := users.SQLStore{Db: db}
 	context := handlers.NewHandlerContext(SESSIONKEY, redisStore, userStore)
+	plantCtx := plants_main.Context{PlantStore: db}
 	// verify tls exists
 	if len(TLSCERT) == 0 {
 		log.Fatalln(errors.New("TLSCERT Not Found"))
@@ -76,7 +108,8 @@ func main() {
 	}
 
 	if len(addr) == 0 {
-		addr = ":80"
+		addr = ":443"
+		// addr = ":80"
 	}
 
 	plantAddress := strings.Split(PLANTADDR, ",")
@@ -89,16 +122,34 @@ func main() {
 		pUrls = append(pUrls, curURL)
 	}
 
+	// helloURL := &url.URL{Scheme: "http", Host: HELLOADDR}
+
+	// helloProxy := &httputil.ReverseProxy{Director: CustomDirector2(helloURL)}
+	summaryURL := &url.URL{Scheme: "http", Host: SUMMARYADDR}
+	summaryProxy := &httputil.ReverseProxy{Director: CustomDirector2(summaryURL)}
+
 	plantProxy := &httputil.ReverseProxy{Director: CustomDirector(pUrls, context.SigningKey, context.SessionStore)}
 
 	mux := mux.NewRouter()
+	mux.HandleFunc("/hello", RootHandler)
 	mux.HandleFunc("/v1/users", context.UsersHandler)
 	mux.HandleFunc("/v1/users/{id}", context.SpecificUserHandler)
 	mux.HandleFunc("/v1/sessions", context.SessionsHandler)
 	mux.HandleFunc("/v1/sessions/{id}", context.SpecificSessionHandler)
+	mux.HandleFunc("/v1/plants", plantCtx.PlantsHandler)
+	mux.HandleFunc("/v1/plants/{plantID}", plantCtx.SpecificPlantsHandler)
 
-	mux.Handle("/v1/plants", plantProxy)
-	mux.Handle("/v1/plants/{plantID}", plantProxy)
+	// mux.Handle("/v1/plants", plantProxy)
+	// mux.Handle("/v1/plants/{plantID}", plantProxy)
+
+	// mux.Handle("/v1/hello", helloProxy)
+	// mux.Handle("/v1/root", helloProxy)
+	// mux.Handle("/v1/summary", helloProxy)
+	mux.Handle("/v1/summary", summaryProxy)
+	mux.Handle("/v1/AddPlants/{plantID}", plantProxy)
+	mux.Handle("/v1/UserPlants/{plantID}", plantProxy)
+	mux.Handle("/v1/UserPlants/", plantProxy)
+	mux.Handle("/v1/emissions/", plantProxy)
 
 	wrappedMux := handlers.NewCorsMW(mux)
 
@@ -106,4 +157,5 @@ func main() {
 	log.Println("Hello, World!")
 	// log.Fatal(http.ListenAndServe(addr, mux))
 	log.Fatal(http.ListenAndServeTLS(addr, TLSCERT, TLSKEY, wrappedMux))
+	// log.Fatal(http.ListenAndServe(addr, wrappedMux))
 }

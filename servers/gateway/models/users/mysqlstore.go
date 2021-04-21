@@ -50,9 +50,9 @@ func (database SQLStore) GetByID(ID int64) (*User, error) {
 
 // GetByEmail returns the User associated with the given email
 func (database SQLStore) GetByEmail(email string) (*User, error) {
-	info, err := database.Db.Query("SELECT ID, Email, PassHash, FirstName, LastName FROM Users WHERE Email = ?", email)
+	info, err := database.Db.Query("SELECT UserID, Email, PassHash, UserFname, UserLname FROM Users WHERE Email = ?", email)
 	if err != nil {
-		return nil, fmt.Errorf("Unexpected error querying database: %v", err)
+		return nil, fmt.Errorf("unexpected error querying database: %v", err)
 	}
 	usr := User{}
 	for info.Next() {
@@ -73,13 +73,13 @@ func (database SQLStore) Insert(user *User) (*User, error) {
 	if errTR != nil {
 		return nil, fmt.Errorf("Error beginning transaction: %v", errTR)
 	}
-	insertQ := "INSERT INTO Users(Email, PassHash, FirstName, LastName) VALUES (?,?,?,?)"
+	insertQ := "INSERT INTO Users(Email, UserFname, UserLname, PassHash) VALUES (?,?,?,?)"
 	q, errQ := trx.Prepare(insertQ)
 	if errQ != nil {
 		return InvalidUser, fmt.Errorf("Error preparing insert user transaction")
 	}
 	defer q.Close()
-	result, err := q.Exec(user.Email, user.PassHash, user.FirstName, user.LastName)
+	result, err := q.Exec(user.Email, user.FirstName, user.LastName, user.PassHash)
 	if err != nil {
 		trx.Rollback()
 		return InvalidUser, fmt.Errorf("Error inserting new user: %v", err)

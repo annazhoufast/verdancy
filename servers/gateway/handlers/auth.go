@@ -14,8 +14,63 @@ import (
 )
 
 // UsersHandler handles requests for users to create a new user account (POST)
+// func (context HandlerContext) UsersHandler(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "POST" {
+// 		http.Error(w, "Incorrect Status Method", http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	log.Println("hello im in the UsersHandler")
+// 	header := r.Header.Get("Content-Type")
+
+// 	if !strings.HasPrefix(header, "application/json") {
+// 		http.Error(w, "Header request body must be in JSON", http.StatusUnsupportedMediaType)
+// 		return
+// 	}
+// 	dec := json.NewDecoder(r.Body)
+// 	curUser := &users.NewUser{}
+// 	dec.Decode(curUser)
+// 	if valErr := curUser.Validate(); valErr != nil {
+// 		http.Error(w, "Error mesesage: "+valErr.Error(), 400)
+// 		return
+// 	}
+// 	toValUser, toUserErr := curUser.ToUser()
+// 	if toUserErr != nil {
+// 		log.Printf("%v", toUserErr)
+// 		fmt.Printf("Error creating a User: %v", toUserErr)
+
+// 	}
+// 	// insert new user into database
+// 	cur, insertErr := context.UserStore.Insert(toValUser)
+// 	if cur != toValUser || insertErr != nil {
+// 		log.Printf("hey %v", insertErr)
+// 		fmt.Printf("Error inserting new user into database: %v", insertErr)
+// 		// http.Error(w, "Error inserting user into database: "+insertErr.Error(), 400)
+// 	}
+
+// 	// begin session
+// 	sessState := &SessionState{BeginTime: time.Now(), CurrentUser: toValUser}
+// 	_, begErr := sessions.BeginSession(context.SigningKey, context.SessionStore, sessState, w)
+// 	log.Printf("hey %v", begErr.Error())
+// 	if begErr != nil {
+// 		// log.Printf("hey %v", begErr.Error())
+// 		http.Error(w, "Error beginning session: "+begErr.Error(), http.StatusInternalServerError)
+// 	}
+// 	// writing response
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(http.StatusCreated)
+// 	if toValUser.ID != cur.ID {
+// 		fmt.Printf("Error incorrect primary keys")
+// 	}
+
+// 	response, encErr := json.Marshal(toValUser)
+// 	if encErr != nil {
+// 		fmt.Printf("Error encoding user to JSON: %v", encErr)
+// 	}
+// 	w.Write(response)
+// }
 func (context HandlerContext) UsersHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
+	reqMeth := r.Method
+	if reqMeth != "POST" {
 		http.Error(w, "Incorrect Status Method", http.StatusMethodNotAllowed)
 		return
 	}
@@ -29,7 +84,8 @@ func (context HandlerContext) UsersHandler(w http.ResponseWriter, r *http.Reques
 	curUser := &users.NewUser{}
 	dec.Decode(curUser)
 	if valErr := curUser.Validate(); valErr != nil {
-		http.Error(w, "Error mesesage: "+valErr.Error(), 400)
+		// fmt.Printf("Error, Invalid user: %v", valErr)
+		http.Error(w, "Error message: "+valErr.Error(), http.StatusNotAcceptable)
 		return
 	}
 	toValUser, toUserErr := curUser.ToUser()
@@ -40,25 +96,25 @@ func (context HandlerContext) UsersHandler(w http.ResponseWriter, r *http.Reques
 	cur, insertErr := context.UserStore.Insert(toValUser)
 	if cur != toValUser || insertErr != nil {
 		fmt.Printf("Error inserting new user into database: %v", insertErr)
-		http.Error(w, "Error inserting user into database: "+insertErr.Error(), 400)
 	}
-
 	// begin session
 	sessState := &SessionState{BeginTime: time.Now(), CurrentUser: toValUser}
+	// sessID, _ :=
 	_, begErr := sessions.BeginSession(context.SigningKey, context.SessionStore, sessState, w)
 	if begErr != nil {
 		http.Error(w, "Error beginning session: "+begErr.Error(), http.StatusInternalServerError)
 	}
-	// writing response
+	// context.SessionStore.Save(sessID, sessState)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
+	// toValUser.ID
+	// cur.ID
 	if toValUser.ID != cur.ID {
 		fmt.Printf("Error incorrect primary keys")
 	}
-
 	response, encErr := json.Marshal(toValUser)
 	if encErr != nil {
-		fmt.Printf("Error encoding user to JSON: %v", encErr)
+		fmt.Printf("error encoding user to JSON: %v", encErr)
 	}
 	w.Write(response)
 }
@@ -148,6 +204,7 @@ func (context HandlerContext) SessionsHandler(w http.ResponseWriter, r *http.Req
 	curUser, getErr := context.UserStore.GetByEmail(creds.Email)
 	if getErr != nil {
 		time.Sleep(time.Second)
+		log.Printf("%v", getErr)
 		http.Error(w, "Invalid Credentials", http.StatusUnauthorized)
 		return
 	}
@@ -162,6 +219,7 @@ func (context HandlerContext) SessionsHandler(w http.ResponseWriter, r *http.Req
 	context.UserStore.InsertSignIn(curUser, signInTime, ipAdd)
 	authErr := curUser.Authenticate(creds.Password)
 	if authErr != nil {
+		log.Printf("%v", authErr)
 		http.Error(w, "Invalid Credentials", http.StatusUnauthorized)
 		return
 	}
