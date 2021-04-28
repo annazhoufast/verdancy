@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {AdviceCard} from './AdviceCard.js';
+import {Row, Container} from 'react-bootstrap';
 
 export class AdviceCardGroup extends React.Component {
     render() {
@@ -9,9 +10,10 @@ export class AdviceCardGroup extends React.Component {
             cards.push(<AdviceCard/>)
         }
         return(
-            // <h1>hello I am a group of advice cards</h1>
             <div>
-                {cards}
+                <Row className="card-row">
+                  {cards}
+                </Row>
             </div>
         )
     }

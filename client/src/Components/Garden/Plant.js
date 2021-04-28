@@ -13,7 +13,7 @@ function Plant() {
             <Container className="outline">
                 <Row>
                     <Col lg={5}>
-                        <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/data/imgs/tomatoe.png?token=ALLXA25BKVLL7A7AEQS3W3LASHPF6" 
+                        <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/data/imgs/tomatoe.png?token=ALLXA25BKVLL7A7AEQS3W3LASHPF6"
                             alt="drawing of plant" className="garden-img" />
                     </Col>
                     <Col lg={7} className="harvest">

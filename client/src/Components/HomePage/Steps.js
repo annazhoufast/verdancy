@@ -22,8 +22,7 @@ export class Steps extends React.Component {
                 <Row>
                   <div>
                     <h2>three easy steps</h2>
-                    <br/>
-                    <br/>
+                    <br />
                     <Row>
                         {s}
                     </Row>

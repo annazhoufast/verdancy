@@ -16,21 +16,27 @@ code {
 h1 {
   font-size: 64pt;
   font-weight: bold;
+  padding-top: 64px;
 }
 
 h2 {
   font-size: 34pt;
   font-weight: bold;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
-section {
+h3 {
+  font-size: 24pt;
+}
+
+section, .content-header {
   padding-top: 64px;
   padding-bottom: 64px;
 }
 
-.link:hover {
+.link:hover, .nav-button:hover {
   text-decoration: none;
-  font-weight: bold;
 }
 
 .green-background {
@@ -38,26 +44,34 @@ section {
   background-color: #679967;
 }
 
-.darkgreen-background {
+.darkgreen-background, .darkgreen-button, .darkgreen-button:hover {
   color: #ffffff;
   background-color: #194B19;
 }
 
-.cream-background {
+.cream-background, .cream-button, .cream-button:hover {
   color: #373A3C;
   background-color: #F4EBC2;
 }
 
-.darkgreen-text, .green-background .link:hover {
+.darkgreen-text, .nav-bar .link:hover {
   color: #194B19;
 }
 
-.white-text, .green-background .link, .darkgreen-background .link:hover{
+.white-text, .green-background .link, .darkgreen-button .nav-button {
   color: #ffffff;
 }
 
-.black-text, .cream-background .link, .cream-background .link:hover {
+.black-text, .cream-button .nav-button {
   color: #373A3C;
+}
+
+.btn {
+  border: none;
+}
+
+.btn:hover {
+  font-weight: bold;
 }
 
 .centered {
@@ -70,13 +84,18 @@ section {
 
 .nav-bar {
   padding-top: 24px;
+  padding-bottom: 24px;
 }
 
-.nav-links .link {
+.nav-links .link, .nav-links .btn {
   margin-left: 48px;
 }
 
 /* home page */
+
+.main-title h2 {
+  padding: 0;
+}
 
 .title-desc {
   width: 65%;
@@ -126,7 +145,7 @@ section {
     height: 28rem;
 }
 
-/* Specific Plant */
+/* specific Plant */
 
 .img-100 {
     width: 100%;
@@ -209,4 +228,22 @@ section {
 /* this is very hacky but im too lazy to figure out how to center things */
 .add-more {
     padding-top: 2.5rem;
+}
+
+/* advice */
+
+.advice-card {
+  width: 25%;
+  margin: 3%;
+  border-radius: 35px;
+}
+
+/* hacky way to center */
+.advice-card h3 {
+  padding-top: 60%;
+}
+
+/* hacky way to center */
+.card-row {
+  margin-left: 5%;
 }

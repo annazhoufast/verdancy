@@ -106,25 +106,22 @@ export class App extends React.Component {
   render() {
     // const { page, user } = this.state;
 
-    
+
       return (
         <Router>
             <Navbar className="green-background">
                 <div className="container nav-bar">
-                    <Link className="link" to="/">
-                        <Navbar.Brand>verdancy</Navbar.Brand>
-                    </Link>
+                    <Link className="link" to="/">verdancy</Link>
                     <div className="nav-links">
                         <Link className="link" to="/advice">advice</Link>
                         <Link className="link" to="/search">search</Link>
                         <Link className="link" to="/emissions">my emissions</Link>
                         <Link className="link" to="/garden">my garden</Link>
-                        {/* fix these colors later */}
-                        <Button className="darkgreen-background">
-                        <Link to="/signup" className="link darkgreen-background">Get Started</Link>
+                        <Button className="darkgreen-button">
+                            <Link to="/signup" className="nav-button">Get Started</Link>
                         </Button>
-                        <Button className="cream-background">
-                        <Link to="/signin" className="link cream-background">Sign In</Link>
+                        <Button className="cream-button">
+                            <Link to="/signin" className="nav-button">Sign In</Link>
                         </Button>
                     </div>
                 </div>

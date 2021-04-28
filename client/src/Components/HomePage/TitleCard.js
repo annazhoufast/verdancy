@@ -15,17 +15,19 @@ export class TitleCard extends React.Component {
             <div className="container">
               <Row>
                 <div>
-                  <h1>verdancy</h1>
-                  <h2>[vər-​dᵊn(t)-​sē] noun</h2>
-                  <h2>1. <span className="darkgreen-text"><b>green</b></span> with vegetation</h2>
+                  <div className="main-title">
+                    <h1>verdancy</h1>
+                    <h2>[vər-​dᵊn(t)-​sē] noun</h2>
+                    <h2>1. <span className="darkgreen-text"><b>green</b></span> with vegetation</h2>
+                  </div>
                   <br />
                   <div className="title-desc">
                     <p>Go <span className="darkgreen-text"><b>green</b></span> with us. Reduce your
                     carbon footprint with home gardening!</p>
                   </div>
                   <br />
-                  <Button className="darkgreen-background">
-                    <Link to="/search" className="link darkgreen-background">Search our vegetables</Link>
+                  <Button className="darkgreen-button">
+                    <Link to="/search" className="link">Search our vegetables</Link>
                   </Button>
                 </div>
                 {/* image will go here */}
