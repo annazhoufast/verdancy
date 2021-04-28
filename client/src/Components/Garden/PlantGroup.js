@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Plant} from "./Plant";
+import Plant from "./Plant";
+import {Row} from 'react-bootstrap';
 
 export class PlantGroup extends React.Component {
     render() {
@@ -8,9 +9,12 @@ export class PlantGroup extends React.Component {
             plants.push(<Plant/>);
         }
         return (
-            <div>
+            // <div>
+            //     {plants}
+            // </div>
+            <Row>
                 {plants}
-            </div>
+            </Row>
         )
     }
 }

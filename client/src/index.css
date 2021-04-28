@@ -91,3 +91,122 @@ section {
 .team-img {
   width: 80%;
 }
+
+
+/* database */
+
+.full-img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 260px;
+}
+
+.db-plant, .harvest-card {
+    padding-bottom: 2rem;
+}
+
+.db-row {
+    /* margin-left: 0.5rem;
+    margin-right: 0.5rem; */
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+    /* padding-bottom: 2rem; */
+}
+
+.searchbar {
+    padding-bottom: 1rem;
+}
+
+.search {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.card {
+    height: 28rem;
+}
+
+/* Specific Plant */
+
+.img-100 {
+    width: 100%;
+}
+
+.line {
+    border-top: 1px solid black;
+}
+
+.add-button {
+    float: right;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.col, .col-lg-7 {
+    padding-left: 0px;
+}
+
+.green-btn{
+    color: #ffffff;
+  background-color:  #194B19;
+}
+
+.pad-top {
+    padding-top: 5rem;
+}
+
+.plant-name {
+    font-size: 48pt;
+}
+
+.font-size-14 {
+    font-size: 14pt;
+}
+
+.font-size-16 {
+    font-size: 16pt;
+}
+
+/* Garden */
+ .harvest-card .card{
+    min-height: 20rem;
+    height: 20rem;
+}
+
+.col-lg-5 {
+    padding-left: 0px;
+    /* padding-right: 0px; */
+}
+
+.garden-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+}
+
+.harvest-card .col {
+    padding-bottom: 2rem;
+}
+
+.outline {
+    /* border:#373A3C 1px 1px 1px 1px; */
+    /* border-style: solid; */
+    border: 0.1px solid #DEE2E6;
+    border-radius: 5px;
+}
+
+.harvest {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 15px;
+    padding-right: 30px;
+}
+
+/* this is very hacky but im too lazy to figure out how to center things */
+.add-more {
+    padding-top: 2.5rem;
+}
