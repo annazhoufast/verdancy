@@ -26,10 +26,10 @@ SignForm.propTypes = {
     submitForm: PropTypes.func.isRequired,
     values: PropTypes.shape({
         email: PropTypes.string.isRequired,
-        firstName: PropTypes.string,
-        lastName: PropTypes.string,
         password: PropTypes.string.isRequired,
-        passwordConf: PropTypes.string
+        passwordConf: PropTypes.string,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string
     }),
     fields: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string,

@@ -18,7 +18,7 @@ export class Garden extends React.Component {
                     </Col>
                 </Row>
                 <p>Be sure to log your harvest activity when you're ready to eat your produce!</p>
-                <PlantGroup/>
+                <PlantGroup plants={this.props.plants} />
             </div>
         )
     }

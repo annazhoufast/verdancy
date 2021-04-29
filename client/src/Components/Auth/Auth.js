@@ -9,6 +9,7 @@ import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
  * @class Auth
  * @description This is an auth object that controls what page
  * is loaded based on sign up or sign in state
+ * Auth code is provided by INFO 441 TA's
  */
 const Auth = ({ page, setPage, setAuthToken, setUser }) => {
     switch (page) {

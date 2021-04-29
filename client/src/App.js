@@ -22,90 +22,113 @@ import './App.css';
 import './index.css';
 import PageTypes from './Constants/PageTypes/PageTypes';
 import api from './Constants/APIEndpoints/APIEndpoints';
+import {PleaseSignIn} from './Components/Auth/Components/PleaseSIgnIn';
 // s
 
-export class App extends React.Component {
+class App extends Component {
 // function App() {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         page: localStorage.getItem("Authorization") ? PageTypes.signedInMain : PageTypes.signIn,
-    //         authToken: localStorage.getItem("Authorization") || null,
-    //         user: null
-    //     }
+    constructor() {
+        super();
+        this.state = {
+            page: localStorage.getItem("Authorization") ? PageTypes.signedInMain : PageTypes.signIn,
+            authToken: localStorage.getItem("Authorization") || null,
+            user: null,
+            ups: []
+        }
 
-    //     this.getCurrentUser()
-    // }
+        this.getCurrentUser()
+    }
 
 
-    // /**
-    //  * @description Gets the users
-    //  */
-    // getCurrentUser = async () => {
+    /**
+     * @description Gets the users
+     */
+    getCurrentUser = async () => {
+        if (!this.state.authToken) {
+            return;
+        }
+        const response = await fetch(api.base + api.handlers.myuser, {
+            headers: new Headers({
+                "Authorization": this.state.authToken
+            })
+        });
+        if (response.status >= 300) {
+            alert("Unable to verify login. Logging out...");
+            localStorage.setItem("Authorization", "");
+            this.setAuthToken("");
+            this.setUser(null)
+            return;
+        }
+        const user = await response.json()
+        this.setUser(user);
+
+    }
+
+    /**
+     * @description sets the page type to sign in
+     */
+    setPageToSignIn = (e) => {
+        e.preventDefault();
+        this.setState({ page: PageTypes.signIn });
+    }
+
+    /**
+     * @description sets the page type to sign up
+     */
+    setPageToSignUp = (e) => {
+        e.preventDefault();
+        this.setState({ page: PageTypes.signUp });
+    }
+
+    setPage = (e, page) => {
+        e.preventDefault();
+        this.setState({ page });
+    }
+
+    /**
+     * @description sets auth token
+     */
+    setAuthToken = (authToken) => {
+        this.setState({ authToken, page: authToken === "" ? PageTypes.signIn : PageTypes.signedInMain });
+    }
+
+    /**
+     * @description sets the user
+     */
+    setUser = (user) => {
+        this.setState({ user });
+    }
+
+    componentDidMount() {
+        // getUserPlants = async () => {
+        // this.getUserPlants();
+        // setInterval(this.getData, 5000);
+    
+    }
+
+    // getUserPlants = () => {
     //     if (!this.state.authToken) {
     //         return;
     //     }
-    //     const response = await fetch(api.base + api.handlers.myuser, {
+    //     console.log(this.state.authToken);
+    //     fetch("https://verdancy.capstone.ischool.uw.edu/v1/UserPlants/", {
     //         headers: new Headers({
     //             "Authorization": this.state.authToken
     //         })
-    //     });
-    //     if (response.status >= 300) {
-    //         alert("Unable to verify login. Logging out...");
-    //         localStorage.setItem("Authorization", "");
-    //         this.setAuthToken("");
-    //         this.setUser(null)
-    //         return;
-    //     }
-    //     const user = await response.json()
-    //     this.setUser(user);
-
+    //     })
+    //         .then(res => res.json())
+    //         .then(
+    //             (result) => {this.setState({ups: result})}
+    //         );
+    // // }
     // }
-
-    // /**
-    //  * @description sets the page type to sign in
-    //  */
-    // setPageToSignIn = (e) => {
-    //     e.preventDefault();
-    //     this.setState({ page: PageTypes.signIn });
-    // }
-
-    // /**
-    //  * @description sets the page type to sign up
-    //  */
-    // setPageToSignUp = (e) => {
-    //     e.preventDefault();
-    //     this.setState({ page: PageTypes.signUp });
-    // }
-
-    // setPage = (e, page) => {
-    //     e.preventDefault();
-    //     this.setState({ page });
-    // }
-
-    // /**
-    //  * @description sets auth token
-    //  */
-    // setAuthToken = (authToken) => {
-    //     this.setState({ authToken, page: authToken === "" ? PageTypes.signIn : PageTypes.signedInMain });
-    // }
-
-    // /**
-    //  * @description sets the user
-    //  */
-    // setUser = (user) => {
-    //     this.setState({ user });
-    // }
-    constructor(props) {
-        super(props);
-        this.state = {
-            // plantLink: ,
-        };
-    }
 
   render() {
-    // const { page, user } = this.state;
-
+    const { page, user } = this.state;
+    // console.log(page)
+    // console.log(user)
+    console.log(this.state.authToken);
+    // console.log(this.state.ups);
     
       return (
         <Router>
@@ -132,11 +155,28 @@ export class App extends React.Component {
             <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/advice" component={Advice}></Route>
-                <Route exact path="/emissions" component={Emissions}></Route>
-                <Route exact path="/garden" component={Garden}></Route>
+                <Route exact path="/emissions">
+                {user ? <Emissions />: 
+                        // <Garden plants={this.state.ups} authHeader={this.state.authToken} />
+                        <PleaseSignIn />
+                    }
+                </Route>
+                <Route exact path="/garden">
+                    {user ? <Garden /> : 
+                        <PleaseSignIn />
+                    }
+                </Route>
                 <Route exact path="/search" component={Search}></Route>
-                <Route exact path="/signin" component={SignIn}></Route>
-                <Route exact path="/signup" component={SignUp}></Route>
+                {/* <Route exact path="/signin" component={SignIn}></Route> */}
+                {/* <Route exact path="/signup" component={SignUp}></Route> */}
+                <Route exact path="/signup">
+                    {user ? <Home/> :<Auth page={page}
+                        setPage={this.setPage}
+                        setAuthToken={this.setAuthToken}
+                        setUser={this.setUser} />}
+                    </Route>
+                {/* <Route exact path="/signup" component={<SignUp page={page} setPage={this.setPage} setAuthToken={this.setAuthToken}
+                                                            setUser={this.setUser} />}></Route> */}
                 <Route exact path="/plant/" component={SinglePlant}></Route>
             </Switch>
 
@@ -146,4 +186,4 @@ export class App extends React.Component {
     }
 }
 
-// export default App;
+export default App;
