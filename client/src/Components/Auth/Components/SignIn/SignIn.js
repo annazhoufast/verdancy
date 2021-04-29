@@ -4,7 +4,7 @@ import SignForm from '../SignForm/SignForm';
 import api from '../../../../Constants/APIEndpoints/APIEndpoints';
 import Errors from '../../../Errors/Errors';
 import PageTypes from '../../../../Constants/PageTypes/PageTypes';
-
+import {Container, Row, Col} from 'react-bootstrap';
 /**
  * @class
  * @classdesc SignIn handles the sign in component
@@ -81,13 +81,30 @@ class SignIn extends Component {
         const { error } = this.state;
         return <>
             <Errors error={error} setError={this.setError} />
-            <SignForm
-                setField={this.setField}
-                submitForm={this.submitForm}
-                values={values}
-                fields={this.fields} />
-            <button onClick={(e) => this.props.setPage(e, PageTypes.signUp)}>Sign up instead</button>
-            <button onClick={(e) => this.props.setPage(e, PageTypes.forgotPassword)}>Forgot password</button>
+            <Container>
+                <Row>
+                    <Col>
+                        <SignForm
+                            setField={this.setField}
+                            submitForm={this.submitForm}
+                            values={values}
+                            fields={this.fields} />
+                    </Col>
+                    <Col>
+                        <Container>
+                            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80"
+                                alt="dark green leaves" />
+                            <div className="centered-text">
+                                <h4>welcome to</h4>
+                                <h3>verdancy</h3>
+                                <p>get ready to go green with us!</p>
+                            </div>
+                        </Container>
+                    </Col>
+                </Row>
+            </Container>
+            {/* <button onClick={(e) => this.props.setPage(e, PageTypes.signUp)}>Sign up instead</button>
+            <button onClick={(e) => this.props.setPage(e, PageTypes.forgotPassword)}>Forgot password</button> */}
         </>
     }
 }

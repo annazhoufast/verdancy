@@ -258,3 +258,13 @@ section, .content-header {
 .medium-text {
   font-size: 34pt;
 }
+
+
+/* sign in */
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }

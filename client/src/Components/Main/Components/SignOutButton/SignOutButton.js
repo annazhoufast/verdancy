@@ -9,7 +9,10 @@ const SignOutButton = ({ setAuthToken, setUser }) => {
     return <><button onClick={async (e) => {
         e.preventDefault();
         const response = await fetch(api.base + api.handlers.sessionsMine, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: new Headers({
+                "Authorization": localStorage.getItem("Authorization")
+            })
         });
         if (response.status >= 300) {
             const error = await response.text();

@@ -12,7 +12,6 @@ export class Emissions extends React.Component {
             totalEm: 0,
             auth: localStorage.getItem("Authorization")
         }
-        console.log(this.state.auth);
     }
 
     componentDidMount() {

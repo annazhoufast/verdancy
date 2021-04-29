@@ -23,6 +23,7 @@ import './index.css';
 import PageTypes from './Constants/PageTypes/PageTypes';
 import api from './Constants/APIEndpoints/APIEndpoints';
 import {PleaseSignIn} from './Components/Auth/Components/PleaseSIgnIn';
+import SignOutButton from './Components/Main/Components/SignOutButton/SignOutButton';
 // s
 
 class App extends Component {
@@ -126,7 +127,7 @@ class App extends Component {
     const { page, user } = this.state;
     // console.log(page)
     // console.log(user)
-    console.log(this.state.authToken);
+    // console.log(this.state.authToken);
     // console.log(this.state.ups);
     
       return (
@@ -163,13 +164,23 @@ class App extends Component {
                     }
                 </Route>
                 <Route exact path="/search" component={Search}></Route>
-                {/* <Route exact path="/signin" component={SignIn}></Route> */}
+                <Route exact path="/signin">
+                    {user ? <SignOutButton setUser={this.setUser} setAuthToken={this.setAuthToken} />
+                        :
+                        <SignIn setPage={this.setPage} setAuthToken={this.setAuthToken} setUser={this.setUser} />
+                    
+                    }
+                </Route>
                 {/* <Route exact path="/signup" component={SignUp}></Route> */}
                 <Route exact path="/signup">
-                    {user ? <Home/> :<Auth page={page}
-                        setPage={this.setPage}
-                        setAuthToken={this.setAuthToken}
-                        setUser={this.setUser} />}
+                    {user ? <SignOutButton setUser={this.setUser} setAuthToken={this.setAuthToken} />
+                    :
+                    // <Auth page={page}
+                    //     setPage={this.setPage}
+                    //     setAuthToken={this.setAuthToken}
+                    //     setUser={this.setUser} />
+                    <SignUp setPage={this.setPage} setAuthToken={this.setAuthToken} setUser={this.setUser} />
+                    }
                     </Route>
                 {/* <Route exact path="/signup" component={<SignUp page={page} setPage={this.setPage} setAuthToken={this.setAuthToken}
                                                             setUser={this.setUser} />}></Route> */}
