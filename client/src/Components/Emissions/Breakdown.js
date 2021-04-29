@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import {IndividualBreakdown} from './IndividualBreakdown';
 
 export class Breakdown extends React.Component {
     render() {
-        let b = [];
-        for (let i = 0; i < 3; i++) {
-            b.push(<IndividualBreakdown/>);
-        }
         return (
-            <div>
-                {b}
-                <h3>Plantastic! Here's the breakdown...</h3>
+          <section className="green-background">
+            <div className="container">
+              <div>
+                <h2 className="centered">Plantastic! Here are the emissions saved per vegtable...</h2>
+              </div>
             </div>
+          </section>
         )
     }
 }

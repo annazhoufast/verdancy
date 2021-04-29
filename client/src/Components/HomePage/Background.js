@@ -10,9 +10,8 @@ export class Background extends React.Component {
                 <div>
                   <h2>the background</h2>
                   <br />
-                  <br />
                   <p>8% of personal carbon footprint comes from food. That's around 720 lbs a year!</p>
-                  <br />
+                  <br/>
                   <p>
                     At Verdancy, we believe small changes lead to big impacts. Simply growing your own vegtables with
                     home gardening will drastically reduce your carbon footprint. Let's show you how!

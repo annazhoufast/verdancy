@@ -66,7 +66,7 @@ class Plant extends Component {
             <Container className="outline">
                 <Row>
                     <Col lg={5}>
-                        <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/data/imgs/tomatoe.png?token=ALLXA25BKVLL7A7AEQS3W3LASHPF6" 
+                        <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/data/imgs/tomatoe.png?token=ALLXA25BKVLL7A7AEQS3W3LASHPF6"
                             alt="drawing of plant" className="garden-img" />
                     </Col>
                     <Col lg={7} className="harvest">
@@ -118,4 +118,10 @@ class Plant extends Component {
     )
                                         }
 }
+<<<<<<< HEAD
 export default Plant;
+=======
+
+// render(<Plant />);
+export default Plant;
+>>>>>>> 800e68f266adaf45cbd4c7eb247d851403ac503b

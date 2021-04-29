@@ -21,7 +21,6 @@ export class Team extends React.Component {
                   <div>
                     <h2>meet the team</h2>
                     <br />
-                    <br />
                     <Row>
                         {ppl}
                     </Row>
