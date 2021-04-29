@@ -105,8 +105,6 @@ class App extends Component {
         // setInterval(this.getData, 5000);
     
     }
-
-<<<<<<< HEAD
     // getUserPlants = () => {
     //     if (!this.state.authToken) {
     //         return;
@@ -131,9 +129,6 @@ class App extends Component {
     console.log(this.state.authToken);
     // console.log(this.state.ups);
     
-=======
-
->>>>>>> 800e68f266adaf45cbd4c7eb247d851403ac503b
       return (
         <Router>
             <Navbar className="green-background">

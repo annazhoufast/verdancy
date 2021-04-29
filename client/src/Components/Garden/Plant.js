@@ -118,10 +118,4 @@ class Plant extends Component {
     )
                                         }
 }
-<<<<<<< HEAD
 export default Plant;
-=======
-
-// render(<Plant />);
-export default Plant;
->>>>>>> 800e68f266adaf45cbd4c7eb247d851403ac503b

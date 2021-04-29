@@ -15,7 +15,7 @@ export class Conversions extends React.Component {
             <div className="container">
               <Row>
                 <div>
-                  <h2 className="centered">Let’s break this down! 30,750 g CO2e equates to...</h2>
+                  <h2 className="centered">Let’s break this down! {this.props.emissions} g CO2e equates to...</h2>
                   <br />
                   <Row>
                     {b}
