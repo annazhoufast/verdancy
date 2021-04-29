@@ -13,7 +13,7 @@ export class AdviceCard extends React.Component {
 
     render() {
         return (
-            <Card className="cream-background centered advice-card"
+            <Card className="cream-background centered" id="advice-card"
             onMouseEnter={() => {this.onMouseEnter();}} onMouseOut={() => {this.onMouseOut();}}>
                 <h3 id="adviceTitle">{this.state.cardContent}</h3>
             </Card>

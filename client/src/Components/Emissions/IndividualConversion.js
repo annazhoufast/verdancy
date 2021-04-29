@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export class IndividualBreakdown extends React.Component {
+export class IndividualConversion extends React.Component {
     render() {
         return (
             <div>

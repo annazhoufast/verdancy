@@ -110,9 +110,9 @@ export class App extends React.Component {
       return (
         <Router>
             <Navbar className="green-background">
-                <div className="container nav-bar">
+                <div className="container" id="nav-bar">
                     <Link className="link" to="/">verdancy</Link>
-                    <div className="nav-links">
+                    <div id="nav-links">
                         <Link className="link" to="/advice">advice</Link>
                         <Link className="link" to="/search">search</Link>
                         <Link className="link" to="/emissions">my emissions</Link>

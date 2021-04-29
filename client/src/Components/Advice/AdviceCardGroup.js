@@ -11,7 +11,7 @@ export class AdviceCardGroup extends React.Component {
         }
         return(
             <div>
-                <Row className="card-row">
+                <Row id="advice-row">
                   {cards}
                 </Row>
             </div>

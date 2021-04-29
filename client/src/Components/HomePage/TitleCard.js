@@ -15,13 +15,13 @@ export class TitleCard extends React.Component {
             <div className="container">
               <Row>
                 <div>
-                  <div className="main-title">
+                  <div id="main-title">
                     <h1>verdancy</h1>
-                    <h2>[vər-​dᵊn(t)-​sē] noun</h2>
+                    <h2>[vər-​dᵊn(t)-​sē] <i>noun</i></h2>
                     <h2>1. <span className="darkgreen-text"><b>green</b></span> with vegetation</h2>
                   </div>
                   <br />
-                  <div className="title-desc">
+                  <div id="title-desc">
                     <p>Go <span className="darkgreen-text"><b>green</b></span> with us. Reduce your
                     carbon footprint with home gardening!</p>
                   </div>

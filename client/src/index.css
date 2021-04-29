@@ -44,17 +44,17 @@ section, .content-header {
   background-color: #679967;
 }
 
-.darkgreen-background, .darkgreen-button, .darkgreen-button:hover {
+.darkgreen-background, .darkgreen-button, .darkgreen-button:hover, .darkgreen-button:active, .darkgreen-button:focus {
   color: #ffffff;
   background-color: #194B19;
 }
 
-.cream-background, .cream-button, .cream-button:hover {
+.cream-background, .cream-button, .cream-button:hover, .cream-button:active, .cream-button:focus {
   color: #373A3C;
   background-color: #F4EBC2;
 }
 
-.darkgreen-text, .nav-bar .link:hover {
+.darkgreen-text, #nav-bar .link:hover {
   color: #194B19;
 }
 
@@ -82,22 +82,23 @@ section, .content-header {
 
 /* navbar */
 
-.nav-bar {
+#nav-bar {
   padding-top: 24px;
   padding-bottom: 24px;
 }
 
-.nav-links .link, .nav-links .btn {
+#nav-links .link, #nav-links .btn {
   margin-left: 48px;
 }
 
 /* home page */
 
-.main-title h2 {
+#main-title h2 {
   padding: 0;
+  font-weight: normal;
 }
 
-.title-desc {
+#title-desc {
   width: 65%;
 }
 
@@ -110,7 +111,6 @@ section, .content-header {
 .team-img {
   width: 80%;
 }
-
 
 /* database */
 
@@ -145,7 +145,7 @@ section, .content-header {
     height: 28rem;
 }
 
-/* specific Plant */
+/* specific plant */
 
 .img-100 {
     width: 100%;
@@ -185,7 +185,7 @@ section, .content-header {
     font-size: 16pt;
 }
 
-/* Garden */
+/* garden */
  .harvest-card .card{
     min-height: 20rem;
     height: 20rem;
@@ -232,18 +232,29 @@ section, .content-header {
 
 /* advice */
 
-.advice-card {
+#advice-card {
   width: 25%;
   margin: 3%;
   border-radius: 35px;
+  filter:drop-shadow(5px 5px 5px #C8C8C8);
 }
 
 /* hacky way to center */
-.advice-card h3 {
+#advice-card h3 {
   padding-top: 60%;
 }
 
 /* hacky way to center */
-.card-row {
+#advice-row {
   margin-left: 5%;
+}
+
+/* emissions */
+
+#emissions-num {
+  padding: 0;
+}
+
+.medium-text {
+  font-size: 34pt;
 }
