@@ -7,7 +7,7 @@ export class Background extends React.Component {
           <section>
             <div className="container">
               <Row>
-                <div>
+                <div id="background-desc" className="left-stuff">
                   <h2>the background</h2>
                   <br />
                   <p>8% of personal carbon footprint comes from food. That's around 720 lbs a year!</p>
@@ -17,7 +17,8 @@ export class Background extends React.Component {
                     home gardening will drastically reduce your carbon footprint. Let's show you how!
                   </p>
                 </div>
-                {/* image will go here */}
+                <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/footprint.png?token=AKMRZNWA7655LQQWV53PJ6TASSLNI"
+                alt="carbon footprint illustration" id="background-img"/>
               </Row>
             </div>
           </section>

@@ -80,6 +80,10 @@ section, .content-header {
   text-align: center;
 }
 
+.left-stuff {
+  margin-right: 15%;
+}
+
 /* navbar */
 
 #nav-bar {
@@ -100,6 +104,14 @@ section, .content-header {
 
 #title-desc {
   width: 65%;
+}
+
+#background-desc {
+  width: 45%;
+}
+
+#background-img {
+  width: 40%;
 }
 
 .step-img, .step-desc {
@@ -253,6 +265,10 @@ section, .content-header {
 
 #emissions-num {
   padding: 0;
+}
+
+#emissions-img {
+  width: 30%;
 }
 
 .medium-text {
