@@ -5,8 +5,8 @@ export class Breakdown extends React.Component {
         return (
           <section className="green-background">
             <div className="container">
-              <div>
-                <h2 className="centered">Plantastic! Here are the emissions saved per vegtable...</h2>
+              <div className="centered">
+                <h3 className="centered emissions-header">Plantastic! Let's take a look at the emissions that were saved by each vegetable...</h3>
               </div>
             </div>
           </section>

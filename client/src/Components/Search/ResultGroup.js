@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react';
 import {Result} from './Result';
 import {Row, CardDeck} from 'react-bootstrap';
+import Form from './Form';
 
 export class ResultGroup extends React.Component {
 
@@ -43,6 +44,13 @@ export class ResultGroup extends React.Component {
         } else {
             return (
             <div>
+                {/*
+                <Form
+                    placeholderText="ie. Seattle, 98115"
+                    onSubmit={(query) => {
+                        console.log("do something with query here");
+                    }}
+                /> */}
                 <Row className="db-row">
                     {items.map(item => (
                         <Result pName={item.PlantName} pSName={item.PlantScientificName}

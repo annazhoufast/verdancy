@@ -20,7 +20,7 @@ h1 {
 }
 
 h2 {
-  font-size: 34pt;
+  font-size: 40pt;
   font-weight: bold;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -28,6 +28,7 @@ h2 {
 
 h3 {
   font-size: 24pt;
+  font-weight: bold;
 }
 
 section, .content-header {
@@ -62,11 +63,15 @@ section, .content-header {
   color: #ffffff;
 }
 
-.black-text, .cream-button .nav-button {
+.black-text, .cream-button .nav-button, #home-background .link {
   color: #373A3C;
 }
 
-.btn {
+.green-text {
+  color: #679967;
+}
+
+.btn, .btn:active {
   border: none;
 }
 
@@ -78,6 +83,11 @@ section, .content-header {
   display: inline-block;
   width: auto;
   text-align: center;
+}
+
+/* hacky way to center images when doing a side-by-side */
+.left-stuff {
+  margin-right: 15%;
 }
 
 /* navbar */
@@ -93,22 +103,46 @@ section, .content-header {
 
 /* home page */
 
+#home-background {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/cover.png?token=AKMRZNUTPHM4QZJOHM27RNDASTARW");
+  background-position: center;
+  background-size: cover;
+  color: #ffffff;
+}
+
 #main-title h2 {
   padding: 0;
   font-weight: normal;
 }
 
+/* makes the title text wrap
 #title-desc {
   width: 65%;
 }
+*/
 
-.step-img, .step-desc {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+.background-num {
+  font-size: 34pt;
+  font-weight: bold;
+  color: #194B19;
 }
 
-.team-img {
+#background-desc {
+  width: 47%;
+}
+
+#background-img {
+  width: 35%;
+  height: 35%;
+  margin-top: 10%;
+}
+
+.individ-step {
+  width: 60%;
+  margin: auto;
+}
+
+#team-img {
   width: 80%;
 }
 
@@ -255,10 +289,29 @@ section, .content-header {
   padding: 0;
 }
 
+#emissions-img {
+  width: 30%;
+}
+
 .medium-text {
   font-size: 34pt;
 }
 
+.emissions-header {
+  width: 50%;
+  padding-bottom: 5%;
+}
+
+.conversion {
+  width: 30%;
+  margin: auto;
+}
+
+.conversion-num {
+  font-size: 34pt;
+  font-weight: bold;
+  padding-top: 24px;
+}
 
 /* sign in */
 .centered-text {
