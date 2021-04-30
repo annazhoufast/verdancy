@@ -9,7 +9,8 @@ export class Advice extends React.Component {
               <div>
                   <div className="content-header">
                     <h2>new to gardening?</h2>
-                    <p>we've got you covered with some beginner's gardening tips. hover over a card to learn more!</p>
+                    <p>We've got you covered with some beginner's gardening tips.</p>
+                    <p>Hover over an advice card to learn more!</p>
                   </div>
                   <AdviceCardGroup/>
               </div>
