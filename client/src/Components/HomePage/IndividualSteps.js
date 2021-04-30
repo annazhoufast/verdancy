@@ -8,8 +8,9 @@ export class IndividualSteps extends React.Component {
                 <img src={this.props.img} alt={this.props.alt} className="individ-step"/>
                 <br/>
                 <br/>
-                <p><b>{this.props.title}</b></p>
+                <h3>{this.props.title}</h3>
                 <div className="individ-step">
+                  <br/>
                   <p>{this.props.description}</p>
                 </div>
             </Col>
