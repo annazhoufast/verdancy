@@ -259,6 +259,12 @@ section, .content-header {
   font-size: 34pt;
 }
 
+.conversion {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 /* sign in */
 .centered-text {
