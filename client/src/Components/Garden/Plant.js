@@ -17,7 +17,10 @@ class Plant extends Component {
         this.state = {
             lgShow: false,
             quant: 0,
-            auth: localStorage.getItem("Authorization")
+            auth: localStorage.getItem("Authorization"),
+            total: this.props.quantity,
+            co2: this.props.co2,
+            totalCO2: this.props.totCarbon
         }
     }
     updateQ = quant => this.setState({ quant: quant });
@@ -48,7 +51,14 @@ class Plant extends Component {
             console.log(error);
             return;
         }
-        this.setState({lgShow: false});
+        let newTotal = this.state.total + quant;
+        let newCarbon = this.state.co2 * newTotal;
+        this.setState({
+            lgShow: false,
+            total: newTotal,
+            totalCO2: newCarbon
+
+        });
         // window.location.reload(true);
         const respMessage = await response.body;
         console.log(quant);
@@ -74,9 +84,11 @@ class Plant extends Component {
                             <b>{this.props.pName}</b>
                         </h4>
                         <p>Harvest Total</p>
-                        <p>{this.props.quantity}</p>
+                        {/* <p>{this.props.quantity}</p> */}
+                        <p>{this.state.total}</p>
                         <p>Carbon Emissions Saved</p>
-                        <p>{this.props.totCarbon} g</p>
+                        {/* <p>{this.props.totCarbon} g</p> */}
+                        <p>{this.state.totalCO2} g CO2</p>
                         <Button onClick={() => this.setState({lgShow: true})} block className="green-btn">Harvest!</Button>
                         <Modal
                             size="lg"

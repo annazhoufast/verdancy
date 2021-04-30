@@ -8,66 +8,45 @@ export class ResultGroup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: null,
-            isLoaded: false,
-            items: []
+            items: this.props.plants,
+            plants: [],
+            isLoaded: false
         };
     }
 
     componentDidMount() {
-        fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants")
+        const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants")
             .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(result);
-                    console.log(result.items);
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
+            .then((result) => {
+                console.log(result);
+                this.setState({plants: result, isLoaded: true});
+                // result.map(cur => (
+                //     this.state.singlePlants.push(
+                //         // <Route exact path={`/plant/${cur.PlantID}`}>
+                //         //     <SinglePlant id={cur.PlantID}/>
+                //         // </Route>
+                //     )
+                // ));
+            });
     }
+
     render() {
-        const {error, isLoaded, items} = this.state;
-        // console.log(items);
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
+
+        if (!this.state.isLoaded) {
+            return (
+                <div>Loading...</div>
+            )
         } else {
             return (
             <div>
-                {/*
-                <Form
-                    placeholderText="ie. Seattle, 98115"
-                    onSubmit={(query) => {
-                        console.log("do something with query here");
-                    }}
-                /> */}
                 <Row className="db-row">
-                    {items.map(item => (
+                    {this.state.plants.map(item => (
                         <Result pName={item.PlantName} pSName={item.PlantScientificName}
                             difficulty={item.Difficulty} image={item.ImageLink} id={item.PlantID} />
                     ))}
                 </Row>
             </div>
             )
-        }
-        // let r = [];
-        // for (let i = 0; i < 6; i++) {
-        //     r.push(<Result/>);
-        // }
-        // return (
-        //     <div>
-        //         {r}
-        //     </div>
-        // )
+                    }
     }
 }

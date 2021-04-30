@@ -1,7 +1,13 @@
 import React, {Component, useState} from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import PropTypes from 'prop-types';
 import {withRouter, useLocation} from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+
+
+
+
 
 export class SinglePlant extends React.Component {
     constructor(props) {
@@ -10,21 +16,14 @@ export class SinglePlant extends React.Component {
             error: null,
             isLoaded: false,
             items: {},
+            auth: localStorage.getItem("Authorization"),
             id: this.props.id
         };
-        console.log(this.state.id);
+        
     }
 
-    // usePathname = () => {
-    //     const location = useLocation();
-    //     console.log(location.pathname);
-    //     return location.pathname;
-    //   }
-
     componentDidMount() {
-        console.log(this.props.url);
-        const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants/" + this.props.id)
-        // const response = fetch(this.props.url)
+        const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants/" + this.state.id)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -42,14 +41,29 @@ export class SinglePlant extends React.Component {
             );
         console.log(response);
     }
-    render() {
-        // console.log(window.location.pathname);
-        console.log(this.state.id);
-        const {error, isLoaded, items} = this.state;
-        // const location = useLocation();
-        // console.log(location.pathname);
-        // console.log(items);
 
+    addToGarden = (e) => {
+        e.preventDefault();
+        console.log(this.props.id);
+        const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/AddPlants/" + this.state.id, {
+            method: "POST",
+            headers: new Headers({
+                "Authorization": this.state.auth
+            })
+        });
+        if (response.status > 201) {
+            const error = response.text();
+            console.log(error);
+            return;
+        }
+        this.setState({inGarden: true});
+        console.log(response);
+    }
+
+    render() {
+        
+
+        const {error, isLoaded, items} = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -63,7 +77,12 @@ export class SinglePlant extends React.Component {
                                 <h1 className="plant-name">{items.PlantName}</h1>
                             </Col>
                             <Col className="add">
-                                <Button variant="primary" size="lg" className="add-button">+ add to garden</Button>
+                                {this.state.auth ? 
+                                    <Button variant="primary" size="lg" className="add-button green-btn" onClick={this.addToGarden}>+ add to garden</Button>
+                                        :
+                                    <div />
+                                }
+                                
                             </Col>
                         </Row>
                         <Row>
@@ -116,3 +135,5 @@ export class SinglePlant extends React.Component {
         }
     }
 }
+
+const ShowTheLocationWithRouter = withRouter(SinglePlant);

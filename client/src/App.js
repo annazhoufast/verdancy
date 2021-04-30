@@ -12,9 +12,7 @@ import {Advice} from './Components/Advice/Advice';
 import {Emissions} from './Components/Emissions/Emissions';
 import {Garden} from './Components/Garden/Garden';
 import {Search} from './Components/Search/Search';
-// import {SignUp} from './Components/Login/SignUp';
 import SignUp from './Components/Auth/Components/SignUp/SignUp';
-// import {SignIn} from './Components/Login/SignIn';
 import SignIn from './Components/Auth/Components/SignIn/SignIn';
 import Auth from './Components/Auth/Auth';
 import {SinglePlant} from './Components/SinglePlant/SinglePlant';
@@ -34,8 +32,9 @@ class App extends Component {
             page: localStorage.getItem("Authorization") ? PageTypes.signedInMain : PageTypes.signIn,
             authToken: localStorage.getItem("Authorization") || null,
             user: null,
-            ups: [],
-            id: 1
+            singlePlants: [],
+            plants: [],
+            userPlants: []
         }
 
         this.getCurrentUser()
@@ -105,32 +104,43 @@ class App extends Component {
         // getUserPlants = async () => {
         // this.getUserPlants();
         // setInterval(this.getData, 5000);
+        const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants")
+            .then(res => res.json())
+            .then((result) => {
+                console.log(result);
+                this.setState({plants: result});
+                result.map(cur => (
+                    this.state.singlePlants.push(
+                        <Route exact path={`/plant/${cur.PlantID}`}>
+                            <SinglePlant id={cur.PlantID}/>
+                        </Route>
+                    )
+                ));
+            });
+        // console.log(this.state.authToken)
+        // if (this.state.authToken) {
+        //     fetch("https://verdancy.capstone.ischool.uw.edu/v1/UserPlants/", {
+        //         method: 'GET',
+        //         headers: new Headers({
+        //             'Authorization': this.state.authToken
+        //         })
+        //     }).then(res => res.json())
+        //         .then((result) => {
+        //             // console.log(result);
+        //             // this.setState({userPlants: result});
+        //             this.state.userPlants = result;
+        //             // console.log(this.state.userPlants);
+        //         });
+        // }
+        // console.log(this.state.userPlants);
     
     }
-    // getUserPlants = () => {
-    //     if (!this.state.authToken) {
-    //         return;
-    //     }
-    //     console.log(this.state.authToken);
-    //     fetch("https://verdancy.capstone.ischool.uw.edu/v1/UserPlants/", {
-    //         headers: new Headers({
-    //             "Authorization": this.state.authToken
-    //         })
-    //     })
-    //         .then(res => res.json())
-    //         .then(
-    //             (result) => {this.setState({ups: result})}
-    //         );
-    // // }
-    // }
+
+    
 
   render() {
+    console.log(this.state.id);
     const { page, user } = this.state;
-    // console.log(page)
-    // console.log(user)
-    // console.log(this.state.authToken);
-    // console.log(this.state.ups);
-    
       return (
         <Router>
             <Navbar className="green-background">
@@ -155,16 +165,17 @@ class App extends Component {
                 <Route exact path="/advice" component={Advice}></Route>
                 <Route exact path="/emissions">
                 {user ? <Emissions />: 
-                        // <Garden plants={this.state.ups} authHeader={this.state.authToken} />
                         <PleaseSignIn />
                     }
                 </Route>
                 <Route exact path="/garden">
-                    {user ? <Garden /> : 
+                    {user ? <Garden plants={this.state.userPlants} /> : 
                         <PleaseSignIn />
                     }
                 </Route>
-                <Route exact path="/search" component={Search}></Route>
+                <Route exact path="/search">
+                    <Search stuff={this.state.plants} />
+                </Route>
                 <Route exact path="/signin">
                     {user ? <SignOutButton setUser={this.setUser} setAuthToken={this.setAuthToken} />
                         :
@@ -172,22 +183,15 @@ class App extends Component {
                     
                     }
                 </Route>
-                {/* <Route exact path="/signup" component={SignUp}></Route> */}
                 <Route exact path="/signup">
                     {user ? <SignOutButton setUser={this.setUser} setAuthToken={this.setAuthToken} />
-                    :
-                    // <Auth page={page}
-                    //     setPage={this.setPage}
-                    //     setAuthToken={this.setAuthToken}
-                    //     setUser={this.setUser} />
-                    <SignUp setPage={this.setPage} setAuthToken={this.setAuthToken} setUser={this.setUser} />
+                        :
+                        <SignUp setPage={this.setPage} setAuthToken={this.setAuthToken} setUser={this.setUser} />
                     }
-                    </Route>
-                {/* <Route exact path="/signup" component={<SignUp page={page} setPage={this.setPage} setAuthToken={this.setAuthToken}
-                                                            setUser={this.setUser} />}></Route> */}
-                <Route exact path={'/plant/'+this.state.id}>
-                    <SinglePlant id={this.state.id} />
                 </Route>
+                {/* this is terrible code im sorry but i cant think of anything else */}
+                {this.state.singlePlants}
+    
             </Switch>
 
         </Router>

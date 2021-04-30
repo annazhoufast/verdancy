@@ -13,15 +13,10 @@ export class Result extends React.Component {
             auth: localStorage.getItem("Authorization"),
             inGarden: false
         }
-        // console.log(this.props.id)
-        // console.log(this.state.auth.length)
     }
 
-
-    
-
     render() {
-        
+
         const addToGarden = (e) => {
             e.preventDefault();
             console.log(this.props.id);
@@ -40,14 +35,9 @@ export class Result extends React.Component {
             console.log(response);
         }
 
-        const handleClick = () => {
-            // this.state.plantLink = specificLink
-            // console.log(this.state.plantLink)
-            // localStorage.setItem("PlantLink", specificLink);
-            this.setState({plantLink: specificLink});
-        }
         const specificLink = "https://verdancy.capstone.ischool.uw.edu/v1/plants/" + this.props.id;
         const linkToPlant = "/plant/" + this.props.id;
+        const {history} = this.props;
         return (
             <Col md={4} xs={12} className="db-plant">
                 <Card className="card">
@@ -57,9 +47,7 @@ export class Result extends React.Component {
                         {this.state.auth !== null ? <Button variant="outline-success" onClick={addToGarden}>+</Button>: <div/>}
                     </div>
                     <Card.Body>
-                        <Card.Title onClick={handleClick}>
-                            {/* <a href={specificLink}>{this.props.pName}</a> */}
-                            {/* <Link to="/plant/">{this.props.pName}</Link> */}
+                        <Card.Title>
                             <Link to={linkToPlant}>
                                 <h3>{this.props.pName}</h3>
                             </Link>

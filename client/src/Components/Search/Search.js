@@ -8,7 +8,7 @@ export class Search extends React.Component {
         return (
             <div className="search">
                 <SearchBar/>
-                <ResultGroup/>
+                <ResultGroup plants={this.props.stuff} />
             </div>
         )
     }

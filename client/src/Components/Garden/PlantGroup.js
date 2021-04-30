@@ -9,7 +9,8 @@ export class PlantGroup extends React.Component {
             error: null,
             isLoaded: false,
             items: [],
-            stuff: this.props.plants,
+            // items: this.props.plants,
+            stuff: this.props.stuff,
             auth: localStorage.getItem("Authorization")
         }
     }
@@ -39,9 +40,9 @@ export class PlantGroup extends React.Component {
     }
 
     render() {
-        // const {error, isLoaded, items} = this.state;
+        const {error, isLoaded, items} = this.state;
         // console.log(this.props.plants);
-        // console.log(this.stuff)
+        console.log(this.state.stuff)
         // console.log(this.state.auth)
         let plants = [];
         
@@ -55,7 +56,8 @@ export class PlantGroup extends React.Component {
                             pName={this.state.items[i].PlantName}
                             quantity={this.state.items[i].Total}
                             totCarbon={this.state.items[i].TotalCO2}
-                            pID={this.state.items[i].PlantID} />);
+                            pID={this.state.items[i].PlantID} 
+                            co2={this.state.items[i].CO2PerUnit} />);
         }
         if (this.state.error) {
             return <div>Error: {this.state.error.message}</div>
