@@ -34,7 +34,8 @@ class App extends Component {
             page: localStorage.getItem("Authorization") ? PageTypes.signedInMain : PageTypes.signIn,
             authToken: localStorage.getItem("Authorization") || null,
             user: null,
-            ups: []
+            ups: [],
+            id: 1
         }
 
         this.getCurrentUser()
@@ -184,7 +185,9 @@ class App extends Component {
                     </Route>
                 {/* <Route exact path="/signup" component={<SignUp page={page} setPage={this.setPage} setAuthToken={this.setAuthToken}
                                                             setUser={this.setUser} />}></Route> */}
-                <Route exact path="/plant/" component={SinglePlant}></Route>
+                <Route exact path={'/plant/'+this.state.id}>
+                    <SinglePlant id={this.state.id} />
+                </Route>
             </Switch>
 
         </Router>

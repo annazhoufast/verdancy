@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {withRouter, useLocation} from 'react-router-dom';
 
 export class SinglePlant extends React.Component {
     constructor(props) {
@@ -8,17 +9,25 @@ export class SinglePlant extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: {}
+            items: {},
+            id: this.props.id
         };
+        console.log(this.state.id);
     }
 
+    // usePathname = () => {
+    //     const location = useLocation();
+    //     console.log(location.pathname);
+    //     return location.pathname;
+    //   }
+
     componentDidMount() {
-        fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants/2")
+        console.log(this.props.url);
+        const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants/" + this.props.id)
+        // const response = fetch(this.props.url)
             .then(res => res.json())
             .then(
                 (result) => {
-                    // console.log(result);
-                    // console.log(result.items);
                     this.setState({
                         isLoaded: true,
                         items: result
@@ -30,11 +39,17 @@ export class SinglePlant extends React.Component {
                         error
                     });
                 }
-            )
+            );
+        console.log(response);
     }
     render() {
+        // console.log(window.location.pathname);
+        console.log(this.state.id);
         const {error, isLoaded, items} = this.state;
+        // const location = useLocation();
+        // console.log(location.pathname);
         // console.log(items);
+
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
