@@ -3,7 +3,8 @@ import {Card, Col, Button} from 'react-bootstrap';
 import {Link, Route} from 'react-router-dom';
 import { withRouter } from "react-router";
 import {SinglePlant} from '../SinglePlant/SinglePlant';
-import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faChessKing } from '@fortawesome/free-solid-svg-icons'
 
 export class Result extends React.Component {
     constructor(props) {
@@ -45,6 +46,9 @@ export class Result extends React.Component {
                         <Card.Img variant="top" src={this.props.image} className="full-img" />
                         {/* COME BACK AND DEAL W/ THIS */}
                         {this.state.auth !== null ? <Button variant="outline-success" onClick={addToGarden}>+</Button>: <div/>}
+                        <Button variant="success">
+                            <FontAwesomeIcon icon={faCheck} />
+                        </Button>
                     </div>
                     <Card.Body>
                         <Card.Title>
