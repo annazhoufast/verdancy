@@ -23,11 +23,13 @@ type Plant struct {
 }
 
 type UserPlants struct {
-	UserID    int64
-	PlantID   int64
-	PlantName string
-	Total     int
-	TotalCO2  int
+	UserID     int64
+	PlantID    int64
+	PlantName  string
+	Total      int
+	TotalCO2   int
+	ImageLink  string
+	CO2PerUnit int
 }
 
 type Quantity struct {

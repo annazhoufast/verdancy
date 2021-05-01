@@ -195,7 +195,7 @@ func (c *Context) UserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	ups := []UserPlants{}
-	query := "SELECT UP.UserID, UP.PlantID, P.PlantName, SUM(UP.Quantity) as total, (SUM(UP.Quantity) * P.CO2PerUnit) as totCO2 FROM UserPlants UP JOIN Plants P on UP.PlantID = P.PlantID WHERE UP.UserID = ? GROUP BY P.PlantID, UP.UserID, P.PlantName, P.CO2PerUnit"
+	query := "SELECT UP.UserID, UP.PlantID, P.PlantName, SUM(UP.Quantity) as total, (SUM(UP.Quantity) * P.CO2PerUnit) as totCO2, ImageLink, P.CO2PerUnit FROM UserPlants UP JOIN Plants P on UP.PlantID = P.PlantID WHERE UP.UserID = ? GROUP BY P.PlantID, UP.UserID, P.PlantName, P.CO2PerUnit, P.ImageLink"
 	rows, qErr := c.PlantStore.Query(query, c.UserID)
 	if qErr != nil {
 		http.Error(w, "Error retrieving user data", http.StatusInternalServerError)
@@ -203,7 +203,7 @@ func (c *Context) UserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	for rows.Next() {
 		curRow := UserPlants{}
-		if err := rows.Scan(&curRow.UserID, &curRow.PlantID, &curRow.PlantName, &curRow.Total, &curRow.TotalCO2); err != nil {
+		if err := rows.Scan(&curRow.UserID, &curRow.PlantID, &curRow.PlantName, &curRow.Total, &curRow.TotalCO2, &curRow.ImageLink, &curRow.CO2PerUnit); err != nil {
 			http.Error(w, "Error getting User Plants", http.StatusInternalServerError)
 			return
 		}

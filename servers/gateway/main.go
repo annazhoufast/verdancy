@@ -69,7 +69,7 @@ func main() {
 	DSN := os.Getenv("DSN")
 	PLANTADDR := os.Getenv("PLANTADDR")
 	// HELLOADDR := os.Getenv("HELLOADDR")
-	SUMMARYADDR := os.Getenv("SUMMARYADDR")
+	// SUMMARYADDR := os.Getenv("SUMMARYADDR")
 
 	client := redis.NewClient(
 		&redis.Options{
@@ -125,8 +125,8 @@ func main() {
 	// helloURL := &url.URL{Scheme: "http", Host: HELLOADDR}
 
 	// helloProxy := &httputil.ReverseProxy{Director: CustomDirector2(helloURL)}
-	summaryURL := &url.URL{Scheme: "http", Host: SUMMARYADDR}
-	summaryProxy := &httputil.ReverseProxy{Director: CustomDirector2(summaryURL)}
+	// summaryURL := &url.URL{Scheme: "http", Host: SUMMARYADDR}
+	// summaryProxy := &httputil.ReverseProxy{Director: CustomDirector2(summaryURL)}
 
 	plantProxy := &httputil.ReverseProxy{Director: CustomDirector(pUrls, context.SigningKey, context.SessionStore)}
 
@@ -145,7 +145,7 @@ func main() {
 	// mux.Handle("/v1/hello", helloProxy)
 	// mux.Handle("/v1/root", helloProxy)
 	// mux.Handle("/v1/summary", helloProxy)
-	mux.Handle("/v1/summary", summaryProxy)
+	// mux.Handle("/v1/summary", summaryProxy)
 	mux.Handle("/v1/AddPlants/{plantID}", plantProxy)
 	mux.Handle("/v1/UserPlants/{plantID}", plantProxy)
 	mux.Handle("/v1/UserPlants/", plantProxy)

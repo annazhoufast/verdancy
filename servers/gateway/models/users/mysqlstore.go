@@ -34,7 +34,7 @@ type SQLStore struct {
 
 // GetByID gets the User by the given ID
 func (database SQLStore) GetByID(ID int64) (*User, error) {
-	info, err := database.Db.Query("SELECT ID, Email, PassHash, FirstName, LastName FROM Users WHERE UserID = ?", ID)
+	info, err := database.Db.Query("SELECT UserID, Email, PassHash, UserFname, UserLname FROM Users WHERE UserID = ?", ID)
 	if err != nil {
 		return nil, ErrUserNotFound
 	}
@@ -132,7 +132,7 @@ func (database SQLStore) Update(ID int64, updates *Updates) (*User, error) {
 	if updateErr != nil {
 		return nil, updateErr
 	}
-	updateQ := "UPDATE Users SET FirstName = ?, LastName = ? WHERE ID = ?"
+	updateQ := "UPDATE Users SET UserFname = ?, UserLname = ? WHERE ID = ?"
 	q, errQ := trx.Prepare(updateQ)
 	if errQ != nil {
 		return InvalidUser, fmt.Errorf("Error preparing update")
@@ -149,7 +149,7 @@ func (database SQLStore) Update(ID int64, updates *Updates) (*User, error) {
 
 // Delete deletes the user from the database
 func (database SQLStore) Delete(ID int64) error {
-	deleteQ := "DELETE FROM Users WHERE ID =?"
+	deleteQ := "DELETE FROM Users WHERE UserID =?"
 	_, err := database.Db.Exec(deleteQ, ID)
 	if err != nil {
 		return errors.New("Error Deleting User")

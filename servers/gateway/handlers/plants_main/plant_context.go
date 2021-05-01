@@ -26,7 +26,6 @@ type EntirePlant struct {
 	UnitWeight          int
 	UnitDescr           string
 	Descr               string
-	ImageLink           string
 	Soil                string
 	Sun                 string
 	Considerations      string
@@ -39,6 +38,8 @@ type EntirePlant struct {
 	Other               string
 	Harvesting          string
 	Storage             string
+	ImageLink           string
+	ImageLink2          string
 }
 
 // func NewHandlerContext(signingKey string, sessStore sessions.Store, userStore users.Store) *HandlerContext {
