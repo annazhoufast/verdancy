@@ -28,7 +28,8 @@ export class PlantGroup extends React.Component {
                     this.setState({
                         isLoaded: true,
                         items: result
-                    });
+                    })
+                    // localStorage.setItem("ups", this.state.items);
                 },
                 (error) => {
                     this.setState({
@@ -45,18 +46,19 @@ export class PlantGroup extends React.Component {
         console.log(this.state.stuff)
         // console.log(this.state.auth)
         let plants = [];
-        
+
         for (let i = 0; i < this.state.items.length; i++) {
             // plants.push(<Plant img={this.state.stuff[i].ImageLink}
             //                     pName={this.state.stuff[i].PlantName}
             //                     quantity={this.state.stuff[i].Total}
             //                     totCarbon={this.state.stuff[i].TotalCO2}
             //                     pID={this.state.stuff[i].PlantID} />);
-            plants.push(<Plant img={this.state.items[i].ImageLink}
+            plants.push(<Plant id={this.state.items[i].PlantID}
+                            img={this.state.items[i].ImageLink}
                             pName={this.state.items[i].PlantName}
                             quantity={this.state.items[i].Total}
                             totCarbon={this.state.items[i].TotalCO2}
-                            pID={this.state.items[i].PlantID} 
+                            pID={this.state.items[i].PlantID}
                             co2={this.state.items[i].CO2PerUnit} />);
         }
         if (this.state.error) {
@@ -65,7 +67,7 @@ export class PlantGroup extends React.Component {
             return <div>Loading...</div>
         } else {
             return (
-                <div>
+                <div id="garden">
                     <Row>
                         {plants}
                     </Row>

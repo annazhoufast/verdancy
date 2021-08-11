@@ -1,16 +1,11 @@
 import React, {Component, useState} from 'react';
 import {Card, Button, Row, Col, Modal, Form, Container} from 'react-bootstrap';
+import {Link, Route} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NumericInput from 'react-numeric-input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
-
-// export class Plant extends React.Component {
-
-// function updateQuant(quant) {
-//     this.setState({quant});
-// }
-
-// function Plant(props) {
 class Plant extends Component {
     constructor(props) {
         super(props);
@@ -20,11 +15,26 @@ class Plant extends Component {
             auth: localStorage.getItem("Authorization"),
             total: this.props.quantity,
             co2: this.props.co2,
-            totalCO2: this.props.totCarbon
+            totalCO2: this.props.totCarbon,
+            inGarden: true
         }
     }
     updateQ = quant => this.setState({ quant: quant });
-    
+
+    deletePlant = async (e) => {
+        const response = await fetch("https://verdancy.capstone.ischool.uw.edu/v1/UserPlants/" + this.props.pID, {
+            method: "DELETE",
+            headers: new Headers({
+                "Authorization": this.state.auth
+            })
+        });
+        if (response.state > 201) {
+            console.log(response.text());
+            return;
+        }
+        this.setState({inGarden: false});
+    }
+
     updatePlantQuantity = async (e) => {
         e.preventDefault();
         console.log("hello");
@@ -65,69 +75,75 @@ class Plant extends Component {
         console.log(response);
     }
 
-    componentDidUpdate() {
-        // this.updatePlantQuantity()
-    }
-
     render() {
         console.log(this.state.quant)
-    return (
-        <Col lg={6} className="harvest-card">
-            <Container className="outline">
-                <Row>
-                    <Col lg={5}>
-                        <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/data/imgs/tomatoe.png?token=ALLXA25BKVLL7A7AEQS3W3LASHPF6"
-                            alt="drawing of plant" className="garden-img" />
-                    </Col>
-                    <Col lg={7} className="harvest">
-                        <h4>
-                            <b>{this.props.pName}</b>
-                        </h4>
-                        <p>Harvest Total</p>
-                        {/* <p>{this.props.quantity}</p> */}
-                        <p>{this.state.total}</p>
-                        <p>Carbon Emissions Saved</p>
-                        {/* <p>{this.props.totCarbon} g</p> */}
-                        <p>{this.state.totalCO2} g CO2</p>
-                        <Button onClick={() => this.setState({lgShow: true})} block className="green-btn">Harvest!</Button>
-                        <Modal
-                            size="lg"
-                            show={this.state.lgShow}
-                            onHide={() => this.setState({lgShow: false})}
-                            aria-labelledby="example-modal-sizes-title-lg"
-                        >
-                            <Modal.Header closeButton></Modal.Header>
-                            <Modal.Body>
-                                <Container>
-                                    <Row>
-                                        <Col>
-                                            <p>How much {this.props.pName} did you harvest?</p>
-                                        </Col>
-                                        <Col>
-                                            <NumericInput min={0} value={this.state.quant} onChange={this.updateQ} />
-                                            <p>{this.state.quant}</p>
-                                        </Col>
-                                    </Row>
-                                    <Form>
-                                        {['checkbox'].map((type) => (
-                                            <div key={`default-`} className="mb-3">
-                                                <Form.Check
-                                                    type={type}
-                                                    id={`default-`}
-                                                    label={`add to your emissions total?`}
-                                                />
-                                            </div>
-                                        ))}
-                                    </Form>
-                                    <Button className="green-btn" size="lg" onClick={(e) => this.updatePlantQuantity(e)}>Confirm</Button>
-                                </Container>
-                            </Modal.Body>
-                        </Modal>
-                    </Col>
-                </Row>
-            </Container>
-        </Col>
-    )
+        const linkToPlant = "/plant/" + this.props.id;
+        if (this.state.inGarden) {
+        return (
+            <Col lg={6} className="harvest-card">
+                <Container className="outline">
+                    <Row>
+                        <Col lg={5}>
+                            {/* <img src="https://raw.githubusercontent.com/annazhoufast/plantastic/main/data/imgs/tomatoe.png?token=ALLXA23MPOVXSKYWA7DGQXTAULINM"
+                                alt="drawing of plant" className="garden-img" /> */}
+                            <Link to={linkToPlant}>
+                                <img src={this.props.img} alt="drawing of plant" className="garden-img" />
+                            </Link>
+                        </Col>
+                        <Col lg={7} className="harvest">
+                            <Row>
+                                <Col>
+                                    <Link id="plant-title" className="link" to={linkToPlant}>
+                                        <h3>{this.props.pName}</h3>
+                                    </Link>
+                                    {/*<span font-size-16><b>{this.props.pName}</b></span>*/}
+                                </Col>
+                                <Col>
+                                    <Button id="remove-plant" onClick={(e) => this.deletePlant(e)} block className="cream-button">
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </Button>
+                                </Col>
+                            </Row>
+                            <span className="font-size-14"><b>Total Harvested</b></span>
+                            <br />
+                            {/* <p>{this.props.quantity}</p> */}
+                            <span className="font-size-14">{this.state.total}</span>
+                            <br />
+                            <br />
+                            <span className="font-size-14"><b>Total Emissions Saved</b></span>
+                            <br />
+                            {/* <p>{this.props.totCarbon} g</p> */}
+                            <span className="font-size-14">{this.state.totalCO2} gCO2e</span>
+                            <br />
+                            <br />
+                            <Button onClick={() => this.setState({lgShow: true})} block variant="success">Harvest</Button>
+                            <Modal
+                                size="lg"
+                                show={this.state.lgShow}
+                                onHide={() => this.setState({lgShow: false})}
+                                aria-labelledby="example-modal-sizes-title-lg"
+                            >
+                                <Modal.Header className="centered" closeButton>
+                                    <b>How many {this.props.pName} are you harvesting?</b>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <Container id="confirm-harvest">
+                                        <NumericInput min={0} value={this.state.quant} onChange={this.updateQ} />
+                                        <br />
+                                        <Button id="confirm-button" variant="success" size="lg" onClick={(e) => this.updatePlantQuantity(e)}>
+                                            Harvest {this.state.quant} {this.props.pName}?
+                                        </Button>
+                                    </Container>
+                                </Modal.Body>
+                            </Modal>
+                        </Col>
+                    </Row>
+                </Container>
+            </Col>
+        )
+                                            } else {
+                                                return (<div />)
+                                            }
                                         }
 }
 export default Plant;

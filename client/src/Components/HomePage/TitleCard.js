@@ -11,7 +11,7 @@ import {Row, Container} from "react-bootstrap";
 export class TitleCard extends React.Component {
     render() {
       return (
-          <section id="home-background">
+          <section id="title-card">
             <div className="container">
               <Row>
                 <div>
@@ -21,12 +21,18 @@ export class TitleCard extends React.Component {
                     <h2>1. <span className="green-text"><b>green</b></span> with vegetation</h2>
                   </div>
                   <br />
-                  <div id="title-desc">
-                    <p>Go <span className="green-text"><b>green</b></span> with us. Reduce your
-                    carbon footprint with home gardening!</p>
+                  <div>
+                    <p>
+                      Go <span className="green-text"><b>green</b></span> with us. Reduce your
+                      carbon footprint with home gardening!
+                    </p>
+                    <p id="mobile-message">
+                      On mobile or a smaller screen? We highly recommend you use our web app on desktop, as otherwise some features
+                      may not be available and some things may appear out of place.
+                    </p>
                   </div>
                   <br />
-                  <Button className="cream-button">
+                  <Button className="cream-button" size="lg">
                     <Link to="/search" className="link">Search our vegetables</Link>
                   </Button>
                 </div>

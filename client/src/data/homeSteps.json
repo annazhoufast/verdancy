@@ -1,20 +1,20 @@
 [
     {
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/search.png?token=AKMRZNXAF2PAHT4AUYBB6ELASSLES",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/home/search.png?token=AKMRZNRQK2SL4ETI3L7PJVLAT37RC",
         "Alt": "search icon",
-        "Title": "search a vegetable",
-        "Descr": "our database has tons of beginner-friendly vegetables"
+        "Title": "search",
+        "Descr": "search our database to find the right vegetables to grow for you and your home"
     },
     {
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/add.png?token=AKMRZNWN65VKRHS2ATUPBQDASSLFA",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/home/add.png?token=AKMRZNRUKRAAXZA7DBN5HQTAT37R4",
         "Alt": "plant icon",
-        "Title": "add a vegetable",
-        "Descr": "keep track of your vegetables in a virtual garden"
+        "Title": "add",
+        "Descr": "add the vegetables you are growing to your virtual garden to help keep track of them"
     },
     {
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/harvest.png?token=AKMRZNQZ7MSRQIBGAW55O4LASSLEY",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/home/harvest.png?token=AKMRZNV77C3UXIGPVOX3FGTAT37TC",
         "Alt": "harvesting icon",
         "Title": "harvest",
-        "Descr": "congrats! you just reduced your food emissions!"
+        "Descr": "update your garden when you harvest your vegetables to see your new emission savings"
     }
 ]

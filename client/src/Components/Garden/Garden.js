@@ -4,22 +4,28 @@ import {Button, Row, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 export class Garden extends React.Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
     render() {
         return (
-            <div className="search">
+          <section>
+            <div className="container">
                 <Row>
                     <Col>
-                        <h1>my garden</h1>
+                        <h2>my garden</h2>
                     </Col>
                     <Col className="add-more">
                         <Link to="/search">
-                            <Button className="green-btn add-button" size="lg">+ add more plants</Button>
+                            <Button className="add-button" variant="success" size="lg">+ add more vegetables</Button>
                         </Link>
                     </Col>
                 </Row>
-                <p>Be sure to log your harvest activity when you're ready to eat your produce!</p>
+                <span>Be sure to log your harvest activity when you're ready to eat your produce!</span>
                 <PlantGroup stuff={this.props.plants} />
             </div>
+          </section>
         )
     }
 }

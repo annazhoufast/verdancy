@@ -30,7 +30,7 @@ class SignUp extends Component {
 
         this.fields = [
             {
-                name: "Email",
+                name: "Email Address",
                 key: "email"
             },
             {
@@ -38,15 +38,15 @@ class SignUp extends Component {
                 key: "password"
             },
             {
-                name: "Password Confirmation",
+                name: "Confirm Password",
                 key: "passwordConf"
             },
             {
-                name: "First name",
+                name: "First Name",
                 key: "firstName"
             },
             {
-                name: "Last name",
+                name: "Last Name",
                 key: "lastName"
             }
         ];
@@ -109,28 +109,26 @@ class SignUp extends Component {
         const { error } = this.state;
         return <>
             <Errors error={error} setError={this.setError} />
-            <Container>
-                <Row>
-                    <Col>
-                        <SignForm
-                            setField={this.setField}
-                            submitForm={this.submitForm}
-                            values={values}
-                            fields={this.fields} />
-                    </Col>
-                    <Col>
-                        <Container>
-                            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80"
-                                alt="dark green leaves" />
-                            <div className="centered-text">
-                                <h4>welcome to</h4>
-                                <h3>verdancy</h3>
-                                <p>get ready to go green with us!</p>
+
+              <section className="left-half white-background">
+                  <div className="container">
+                    <h2>get started</h2>
+                    <SignForm
+                          setField={this.setField}
+                          submitForm={this.submitForm}
+                          values={values}
+                          fields={this.fields} />
+                  </div>
+              </section>
+              <div className="right-half">
+                    <Container id="welcome">
+                            <div className="centered-text white-text">
+                                <h3>welcome to</h3>
+                                <h1><b>verdancy</b></h1>
+                                <h3>get ready to go green with us!</h3>
                             </div>
-                        </Container>
-                    </Col>
-                </Row>
-            </Container>
+                    </Container>
+              </div>
             {/* <button onClick={(e) => this.props.setPage(e, PageTypes.signIn)}>Sign in instead</button> */}
         </>
     }

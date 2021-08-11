@@ -2,25 +2,25 @@
     {
         "Name": "Jared Lai",
         "Role": "Front End Lead",
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/jared.png?token=AKMRZNRXTEEG73JM6OGPCX3ASSKYI",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/landing/jared.png?token=AKMRZNVM33C2QYWFVSLPL4TAUSQ4M",
         "Alt": "Photo of Jared Lai"
     },
     {
         "Name": "Ana De Las Alas",
         "Role": "Project Manager",
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/ana.png?token=AKMRZNXERC4DGPLEKYHROY3ASSKYW",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/landing/ana.png?token=AKMRZNRTW4RCY2IPZRCCIIDAT4AMO",
         "Alt": "Photo of Ana De Las Alas"
     },
     {
         "Name": "Jessica Prasetyo",
         "Role": "UX Designer",
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/jess.png?token=AKMRZNRB3SKQGLCRPRNX4OLASSKYQ",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/landing/jess.png?token=AKMRZNRFH335NXD5KTMFMOLAT4AOY",
         "Alt": "Photo of Jessica Prasetyo"
     },
     {
         "Name": "Anna Zhou",
         "Role": "Back End Lead",
-        "Img": "https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/anna.png?token=AKMRZNQ24VQE3JBZVT4F3W3ASSKYC",
+        "Img": "https://raw.githubusercontent.com/annazhoufast/verdancy-client/main/src/imgs/landing/anna.png?token=AKMRZNX2BQQMVNUX4LQC3DTAT4AOA",
         "Alt": "Photo of Anna Zhou"
     }
 ]

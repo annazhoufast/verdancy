@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
 body {
   font-family: "Inter", Helvetica, Arial, sans-serif;
   font-size: 16pt;
   color: #373A3C;
   background-color: #ffffff;
+  zoom: 80%;
+}
+
+#homepage, #emissions-page, #landing-page {
+  zoom: 100%;
 }
 
 code {
@@ -16,14 +20,14 @@ code {
 h1 {
   font-size: 64pt;
   font-weight: bold;
-  padding-top: 64px;
+  padding-top: 4rem;
 }
 
 h2 {
   font-size: 40pt;
   font-weight: bold;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 4rem;
+  padding-bottom: 1.5rem;
 }
 
 h3 {
@@ -31,52 +35,75 @@ h3 {
   font-weight: bold;
 }
 
-section, .content-header {
-  padding-top: 64px;
-  padding-bottom: 64px;
+section {
+  padding-top: 3rem;
+  padding-bottom: 7rem;
+}
+
+.container {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
 }
 
 .link:hover, .nav-button:hover {
   text-decoration: none;
 }
 
-.green-background {
+.green-background, .green-button, .green-button:hover, .green-button:active, .green-button:focus, .green-nav-button, .green-nav-button:hover, .green-nav-button:active, .green-nav-button:focus {
   color: #ffffff;
-  background-color: #679967;
+  background-color: #679967 !important;
 }
 
-.darkgreen-background, .darkgreen-button, .darkgreen-button:hover, .darkgreen-button:active, .darkgreen-button:focus {
+.darkgreen-background {
   color: #ffffff;
   background-color: #194B19;
 }
 
 .cream-background, .cream-button, .cream-button:hover, .cream-button:active, .cream-button:focus {
   color: #373A3C;
-  background-color: #F4EBC2;
+  background-color: #F4EBC2 !important;
 }
 
-.darkgreen-text, #nav-bar .link:hover {
+.white-background {
+  color: #373A3C;
+  background-color: #ffffff;
+}
+
+.darkgreen-text, .green-button:hover, .green-nav-button .nav-button:hover {
   color: #194B19;
 }
 
-.white-text, .green-background .link, .darkgreen-button .nav-button {
+.white-text, .darkgreen-background .link, .green-nav-button .nav-button, .cream-button:hover, #title-card .link:hover, #sign-out:hover, .cream-button .nav-button:hover {
   color: #ffffff;
 }
 
-.black-text, .cream-button .nav-button, #home-background .link {
+.black-text, .cream-button .nav-button, #title-card .link {
   color: #373A3C;
 }
 
-.green-text {
+.green-text, .link, #nav-bar .link:hover, #footer .link:hover {
   color: #679967;
 }
 
-.btn, .btn:active {
-  border: none;
+.brightgreen-text, #plant-title:hover, #please-sign-in .link:hover, #calculated-desc .link:hover {
+  color: #6ce688;
 }
 
-.btn:hover {
-  font-weight: bold;
+.btn, .btn:hover, .btn:active, .btn:focus {
+  border: none;
+  outline: 0;
+}
+
+.green-button, .cream-button, .add-button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.right-stuff {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .centered {
@@ -85,26 +112,56 @@ section, .content-header {
   text-align: center;
 }
 
-/* hacky way to center images when doing a side-by-side */
-.left-stuff {
-  margin-right: 15%;
+.left-align {
+  text-align: left;
 }
 
-/* navbar */
+.right-align {
+  text-align: right;
+}
+
+.hidden, #mobile-message{
+  display: none;
+}
+
+.display-on {
+  display: block;
+}
+
+/* navbar and footer*/
 
 #nav-bar {
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+#footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 #nav-links .link, #nav-links .btn {
-  margin-left: 48px;
+  margin-left: 3rem;
+}
+
+.nav-button, #sign-out {
+  font-size: 15pt;
+}
+
+#footer-links {
+  width: 100%;
+  margin: auto;
+}
+
+#footer img {
+  width: 25%;
+  padding-top: 3rem;
 }
 
 /* home page */
 
-#home-background {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://raw.githubusercontent.com/annazhoufast/plantastic/main/client/src/imgs/home/cover.png?token=AKMRZNUTPHM4QZJOHM27RNDASTARW");
+#title-card {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://images.unsplash.com/photo-1591981093673-984cd7de9ca4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
   background-position: center;
   background-size: cover;
   color: #ffffff;
@@ -115,16 +172,10 @@ section, .content-header {
   font-weight: normal;
 }
 
-/* makes the title text wrap
-#title-desc {
-  width: 65%;
-}
-*/
-
 .background-num {
   font-size: 34pt;
   font-weight: bold;
-  color: #194B19;
+  color: #679967;
 }
 
 #background-desc {
@@ -132,83 +183,75 @@ section, .content-header {
 }
 
 #background-img {
-  width: 35%;
-  height: 35%;
-  margin-top: 10%;
+  width: 45%;
+  height: 45%;
+  padding-left: 3rem;
+  padding-top: 5rem;
 }
 
 .individ-step {
-  width: 60%;
+  width: 70%;
   margin: auto;
-}
-
-#team-img {
-  width: 80%;
 }
 
 /* database */
 
-.full-img {
-    width: 100%;
-    object-fit: cover;
-    max-height: 260px;
+#search-bar {
+  padding-bottom: 0;
+}
+
+#results {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 
 .db-plant, .harvest-card {
     padding-bottom: 2rem;
 }
 
-.db-row {
-    /* margin-left: 0.5rem;
-    margin-right: 0.5rem; */
-    /* padding-left: 1rem;
-    padding-right: 1rem; */
-    /* padding-bottom: 2rem; */
-}
-
-.searchbar {
-    padding-bottom: 1rem;
-}
-
-.search {
-    padding-left: 5rem;
-    padding-right: 5rem;
-}
-
 .card {
     height: 28rem;
 }
 
-/* specific plant */
-
-.img-100 {
+.full-img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 230px;
 }
+
+/*
+.db-row {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+}
+*/
+
+#plant-preview {
+  margin-top: 1rem;
+}
+
+.search-button, .add-button, #remove-plant {
+  float: right;
+}
+
+/* specific plant page */
 
 .line {
     border-top: 1px solid black;
 }
 
-.add-button {
-    float: right;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+/* this is very hacky but im too lazy to figure out how to center things */
+.add-more {
+    padding-top: 2.5rem;
+    padding-right: 0;
 }
 
 .col, .col-lg-7 {
-    padding-left: 0px;
-}
-
-.green-btn{
-    color: #ffffff;
-  background-color:  #194B19;
-}
-
-.pad-top {
-    padding-top: 5rem;
-}
-
-.plant-name {
-    font-size: 48pt;
+    padding-left: 0;
 }
 
 .font-size-14 {
@@ -219,15 +262,28 @@ section, .content-header {
     font-size: 16pt;
 }
 
-/* garden */
- .harvest-card .card{
-    min-height: 20rem;
-    height: 20rem;
+.care-icon {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+#plant-info, #plant-info h3 {
+  padding-top: 2rem;
+}
+
+#plant-img {
+  width: 75%;
+  margin-left: 18%;
+}
+
+/* my garden */
+
+#garden {
+  padding-top: 4rem;
 }
 
 .col-lg-5 {
-    padding-left: 0px;
-    /* padding-right: 0px; */
+    padding-left: 0;
 }
 
 .garden-img {
@@ -236,70 +292,111 @@ section, .content-header {
     object-fit: cover;
 }
 
-.card-img {
-    width: 100%;
-    height: 100%;
-}
-
 .harvest-card .col {
     padding-bottom: 2rem;
 }
 
 .outline {
-    /* border:#373A3C 1px 1px 1px 1px; */
-    /* border-style: solid; */
     border: 0.1px solid #DEE2E6;
     border-radius: 5px;
 }
 
-.harvest {
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
-    padding-left: 15px;
-    padding-right: 30px;
+#remove-plant {
+  padding: 0;
+  width: 2rem;
 }
 
-/* this is very hacky but im too lazy to figure out how to center things */
-.add-more {
-    padding-top: 2.5rem;
+.harvest {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+.modal-dialog {
+  margin-top: 10%;
+}
+
+.modal-backdrop.show {
+  opacity: 0;
+}
+
+#checkbox {
+  padding: 2rem;
+}
+
+#confirm-harvest {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem;
+  text-align: center;
+}
+
+#confirm-button {
+  margin: 3rem;
 }
 
 /* advice */
 
 #advice-card {
   width: 25%;
+  height: 50%;
   margin: 3%;
   border-radius: 35px;
   filter:drop-shadow(5px 5px 5px #C8C8C8);
 }
 
-/* hacky way to center */
-#advice-card h3 {
-  padding-top: 60%;
+#advice-card img {
+  width: 100%;
 }
 
-/* hacky way to center */
+#advice {
+  padding-top: 2rem;
+  padding-bottom: 0;
+}
+
 #advice-row {
-  margin-left: 5%;
+  width: 100%;
+  margin: auto;
 }
 
 /* emissions */
 
 #emissions-num {
   padding: 0;
+  padding-top: 6rem;
+}
+
+.h2size-text {
+  font-size: 40pt;
 }
 
 #emissions-img {
-  width: 30%;
+  width: 25%;
+  height: 75%;
+  padding-top: 3rem;
 }
 
-.medium-text {
-  font-size: 34pt;
+.co2e-info {
+  margin-top: 3rem
+}
+
+.co2e-info div {
+  width: 60%;
 }
 
 .emissions-header {
   width: 50%;
-  padding-bottom: 5%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+#conversion-top-h3 {
+  padding-top: 3rem;
+}
+
+#conversion-bottom-h3 {
+  padding-bottom: 4rem;
 }
 
 .conversion {
@@ -310,14 +407,262 @@ section, .content-header {
 .conversion-num {
   font-size: 34pt;
   font-weight: bold;
-  padding-top: 24px;
+  padding-top: 1.5rem;
 }
 
-/* sign in */
-.centered-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
+.calculated-info {
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* please sign in to view this page */
+
+#please-sign-in img {
+  padding-top: 3rem;
+  width: 15%;
+}
+
+#please-sign-in div {
+  margin: auto;
+  width: 100%;
+}
+
+/* getting started and sign in */
+
+/* hackily centered, not aligned with header */
+.left-half {
+  float: left;
+  width: 55%;
+  min-height: 65rem;
+  padding-left: 13.5rem;
+  margin-bottom: 3rem;
+}
+
+.right-half {
+  float: right;
+  width: 45%;
+  min-height: 65rem;
+  background-image: url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80");
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+
+#welcome {
+  padding-left: 5rem;
+  padding-top: 14rem;
+}
+
+#welcome h1 {
+  padding: 0;
+  font-weight: normal;
+}
+
+#welcome h3 {
+  padding-top: 1rem;
+  font-weight: normal;
+}
+
+.input-box {
+  padding-top: 2rem;
+}
+
+.text-field {
+  width: 75%;
+}
+
+#submit {
+  margin-top: 3rem;
+  width: 75%;
+}
+
+/* landing page */
+
+#landing-page .shortened-section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#landing-page h2 {
+  padding-bottom: 3rem;
+}
+
+#landing-page h3 {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.paragraph-width {
+  width: 75%;
+}
+
+.landing-center {
+  width: 100%;
+  margin: auto;
+}
+
+.landing-img {
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.landing-med-img {
+  width: 50%;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+#landing-intro {
+  padding-top: 2rem;
+}
+
+.landing-row {
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+.landing-row-img {
+  width: 100%;
+}
+
+#landing-steps h3, #meet-the-team h2{
+  padding-top: 0;
+}
+
+#problem-statement {
+
+}
+
+#meet-the-team h3, #problem h3 {
+  padding-bottom: 3rem;
+}
+
+#who-we-are {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+#team-img {
+  width: 80%;
+}
+
+/* mobile specs */
+
+@media only screen and (min-width:768px) and (max-width:1200px) {
+  html, body {
+    font-size: 12px;
   }
+  h1 {
+    font-size: 48pt;
+  }
+
+  h2 {
+    font-size: 30pt;
+  }
+
+  h3 {
+    font-size: 18pt;
+  }
+  .nav-button, #sign-out {
+    font-size: 10pt;
+  }
+  .background-num {
+    font-size: 48pt;
+  }
+  .full-img {
+      max-height: 180px;
+  }
+  .card {
+      height: 29rem;
+  }
+  .font-size-14 {
+      font-size: 10pt;
+  }
+  .font-size-16 {
+      font-size: 12pt;
+  }
+  .h2size-text {
+    font-size: 30pt;
+  }
+  .conversion-num {
+    font-size: 24pt;
+  }
+  #mobile-message {
+    display: block;
+  }
+}
+
+@media only screen and (max-width:991px) {
+  html, body, .individ-step {
+    font-size: 10px;
+  }
+  h1 {
+    font-size: 36pt;
+  }
+
+  h2 {
+    font-size: 21pt;
+  }
+
+  h3 {
+    font-size: 12pt;
+  }
+  .nav-button, #sign-out {
+    font-size: 7pt;
+  }
+  .background-num {
+    font-size: 32pt;
+  }
+  .full-img {
+      max-height: 160px;
+  }
+  .card {
+      height: 29rem;
+  }
+  .harvest-card {
+    width: 50%;
+  }
+  .col-lg-5 {
+    padding: 0;
+  }
+  .font-size-14 {
+      font-size: 8pt;
+  }
+  .font-size-16 {
+      font-size: 10pt;
+  }
+  .h2size-text {
+    font-size: 22pt;
+  }
+  .conversion-num {
+    font-size: 18pt;
+  }
+  .individ-step {
+    width: 25%;
+    margin-top: 1rem;
+  }
+  #plant-img {
+    margin-top: 3rem;
+  }
+  .landing-row-img {
+    width: 50%;
+  }
+  .right-align {
+    text-align: left;
+    padding-top: 2rem;
+  }
+  #team-img {
+    margin-top: 3rem;
+    width: 40%;
+  }
+  #mobile-message {
+    display: block;
+  }
+}
+
+@media only screen and (max-width:991px) {
+  .background-num {
+    font-size: 20pt;
+  }
+}

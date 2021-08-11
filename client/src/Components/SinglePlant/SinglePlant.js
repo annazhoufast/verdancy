@@ -4,10 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PropTypes from 'prop-types';
 import {withRouter, useLocation} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-
-
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTint, faSun, faSpa, faClock, faHandHoldingHeart, faDolly, faRuler, faSeedling, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 export class SinglePlant extends React.Component {
     constructor(props) {
@@ -17,12 +15,15 @@ export class SinglePlant extends React.Component {
             isLoaded: false,
             items: {},
             auth: localStorage.getItem("Authorization"),
-            id: this.props.id
+            id: this.props.id,
+            inGarden: false
         };
-        
+
     }
 
     componentDidMount() {
+
+        window.scrollTo(0, 0)
         const response = fetch("https://verdancy.capstone.ischool.uw.edu/v1/plants/" + this.state.id)
             .then(res => res.json())
             .then(
@@ -61,7 +62,7 @@ export class SinglePlant extends React.Component {
     }
 
     render() {
-        
+
 
         const {error, isLoaded, items} = this.state;
         if (error) {
@@ -70,67 +71,71 @@ export class SinglePlant extends React.Component {
             return <div>Loading...</div>;
         } else {
             return(
-                <div className="pad-top">
-                    <Container>
-                        <Row>
-                            <Col>
-                                <h1 className="plant-name">{items.PlantName}</h1>
-                            </Col>
-                            <Col className="add">
-                                {this.state.auth ? 
-                                    <Button variant="primary" size="lg" className="add-button green-btn" onClick={this.addToGarden}>+ add to garden</Button>
-                                        :
-                                    <div />
-                                }
-                                
-                            </Col>
-                        </Row>
-                        <Row>
-                            <p className="darkgreen-text">{items.CO2PerUnit} g CO2e saved per tomato | Gardening Difficulty: {items.Difficulty} | Zones: {items.ZoneStart} - {items.ZoneEnd} | Height: {items.Height}</p>
-                        </Row>
-                    </Container>
+                <section>
+                  <div className="container">
+                      <Container>
+                          <Row>
+                              <Col>
+                                  <h2>{items.PlantName}</h2>
+                              </Col>
+                              <Col className="add-more">
+                                  {this.state.inGarden ?
+                                    <Button variant="success" size="lg" className="add-button" variant="success">
+                                        <FontAwesomeIcon icon={faCheck} /> added to Garden
+                                    </Button>
+                                      :
+                                      <Button variant="success" size="lg" className="add-button" variant="success" onClick={this.addToGarden}>+ add to garden</Button>
+                                  }
 
-                    <Container>
-                        <Row>
-                            <Col lg={7}>
-                                <p className="font-size-14">{items.Descr}</p>
-                                {/* <p>Height: {items.Height}</p> */}
-                                <h3>Plant Care</h3>
-                                <hr className="line"></hr>
-                                <Container>
-                                    <Row>
-                                        <p className="font-size-14">Watering: {items.Watering} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Sunlight: {items.Sun} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Soil: {items.Soil} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Timing: {items.WhenToPlant} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Feeding: {items.Feeding} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Transplanting: {items.Transplanting} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Spacing: {items.Spacing} </p>
-                                    </Row>
-                                    <Row>
-                                        <p className="font-size-14">Harvesting: {items.Harvesting} </p>
-                                    </Row>
-                                </Container>
-                            </Col>
-                            <Col lg={5}>
-                                <img src={items.ImageLink2} alt="pic of plant" className="img-100" />
-                                
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
+                              </Col>
+                          </Row>
+                          <Row>
+                              <p className="darkgreen-text"><b>{items.CO2PerUnit} gCO2e</b> saved per unit | <b>Gardening Difficulty:</b> {items.Difficulty} | <b>Zones:</b> {items.ZoneStart} - {items.ZoneEnd} | <b>Height:</b> {items.Height} inches</p>
+                          </Row>
+                      </Container>
+
+                      <Container id="plant-info">
+                          <Row>
+                              <Col lg={7}>
+                                  <p className="font-size-14">{items.Descr}</p>
+                                  {/* <p>Height: {items.Height}</p> */}
+                                  <h3>Vegetable Care</h3>
+                                  <hr className="line"></hr>
+                                  <Container>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faTint} className="care-icon" /><b> Watering:</b> {items.Watering} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faSun} className="care-icon" /><b>Sunlight:</b> {items.Sun} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faSpa} className="care-icon" /><b>Soil:</b> {items.Soil} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faClock} className="care-icon" /><b>Timing:</b> {items.WhenToPlant} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faHandHoldingHeart} className="care-icon" /><b>Feeding:</b> {items.Feeding} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faDolly} className="care-icon" /><b>Transplanting:</b> {items.Transplanting} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faRuler} className="care-icon" /><b>Spacing:</b> {items.Spacing} </p>
+                                      </Row>
+                                      <Row>
+                                          <p className="font-size-14"><FontAwesomeIcon icon={faSeedling} className="care-icon" /><b>Harvesting:</b> {items.Harvesting} </p>
+                                      </Row>
+                                  </Container>
+                              </Col>
+                              <Col lg={5}>
+                                  <img src={items.ImageLink2} alt="pic of plant" id="plant-img" />
+
+                              </Col>
+                          </Row>
+                      </Container>
+                  </div>
+                </section>
             )
         }
     }

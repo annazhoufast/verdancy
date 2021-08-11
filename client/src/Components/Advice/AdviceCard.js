@@ -3,32 +3,39 @@ import {Card} from 'react-bootstrap';
 
 export class AdviceCard extends React.Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            cardContent: "hello i am a card"
-        };
-    }
+    this.state = {
+      cardImg: props.front,
+    };
+}
 
-    render() {
-        return (
-            <Card className="cream-background centered" id="advice-card"
-            onMouseEnter={() => {this.onMouseEnter();}} onMouseOut={() => {this.onMouseOut();}}>
-                <h3 id="adviceTitle">{this.state.cardContent}</h3>
-            </Card>
-        )
-    }
 
-    onMouseEnter= () => {
-        this.setState({
-          cardContent: "advice wow"
-        })
-    }
+  render() {
 
-    onMouseOut= () => {
-        this.setState({
-          cardContent: "hello i am a card"
-        })
-    }
+      const frontURL = this.props.front
+      const backURL = this.props.back
+
+      return (
+          <Card className="cream-background centered" id="advice-card"
+          onMouseEnter={() => {this.MouseEnter(backURL);}}
+          onMouseOut={() => {this.MouseOut(frontURL);}}>
+              <img src={this.state.cardImg}/>
+          </Card>
+      )
+  }
+
+  MouseEnter = (backURL) => {
+    this.setState({
+      cardImg: backURL
+    })
+  }
+
+  MouseOut = (frontURL) => {
+    this.setState({
+      cardImg: frontURL
+    })
+  }
+
 }
